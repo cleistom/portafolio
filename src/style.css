@@ -1,0 +1,16 @@
+.dark {
+    background-color: #1a202c;
+    color: white;
+}
+
+.dark a {
+    color: #90cdf4;
+}
+
+
+.flex-wrap img {
+    transition: transform 0.3s ease-in-out;
+}
+.flex-wrap img:hover {
+    transform: scale(1.2);
+}

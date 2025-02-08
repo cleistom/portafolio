@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Contenedor principal -->
+    <div class="max-w-5xl mx-auto px-4 py-10">
+        <h1 class="text-4xl font-bold text-center">¡Hola! Soy <span class="text-blue-500">Andres Fabian Ruiz</span></h1>
+        <p class="text-lg text-center mt-2">Desarrollador Web | JavaScript | Node.js | React</p>
+
+        <!-- Botón de descarga de CV -->
+        <div class="text-center mt-5">
+            <a href="public/cv.pdf" download class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                Descargar CV
+            </a>
+        </div>
+
+        <!-- Sección de Habilidades -->
+<section class="mt-10 text-center">
+    <h2 class="text-2xl font-semibold">Habilidades</h2>
+    <p class="text-gray-600">Tecnologías y herramientas que utilizo</p>
+
+    <div class="flex flex-wrap justify-center gap-6 mt-6">
+        <!-- HTML -->
+        <div class="flex flex-col items-center">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-16 h-16">
+            <span class="text-sm mt-2">HTML</span>
+        </div>
+        <!-- CSS -->
+        <div class="flex flex-col items-center">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-16 h-16">
+            <span class="text-sm mt-2">CSS</span>
+        </div>
+        <!-- JavaScript -->
+        <div class="flex flex-col items-center">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-16 h-16">
+            <span class="text-sm mt-2">JavaScript</span>
+        </div>
+        <!-- TailwindCSS -->
+        <div class="flex flex-col items-center">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-16 h-16">
+            <span class="text-sm mt-2">Tailwind CSS</span>
+        </div>
+        <!-- React -->
+        <div class="flex flex-col items-center">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-16 h-16">
+            <span class="text-sm mt-2">React</span>
+        </div>
+        <!-- Node.js -->
+        <div class="flex flex-col items-center">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="w-16 h-16">
+            <span class="text-sm mt-2">Node.js</span>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Sección de proyectos -->
+        <section class="mt-10">
+            <h2 class="text-2xl font-semibold text-center mb-4">Mis Proyectos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Proyecto 1 -->
+                <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl">
+                    <h3 class="text-xl font-bold">Generador de Contraseñas</h3>
+                    <p class="text-gray-600">Una app que genera contraseñas seguras.</p>
+                    <a href="#" class="text-blue-500 mt-2 block">Ver más</a>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl">
+                    <h3 class="text-xl font-bold">Buscador de Películas</h3>
+                    <p class="text-gray-600">Aplicación para encontrar películas con la API de TMDB.</p>
+                    <a href="#" class="text-blue-500 mt-2 block">Ver más</a>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl">
+                    <h3 class="text-xl font-bold">Editor de Código en Línea</h3>
+                    <p class="text-gray-600">Un editor web con resaltado de sintaxis.</p>
+                    <a href="#" class="text-blue-500 mt-2 block">Ver más</a>
+                </div>
+            </div>
+        </section>
+
+       <!-- Sección de contacto -->
+<section class="mt-10 text-center">
+    <h2 class="text-2xl font-semibold">Contacto</h2>
+    <p class="text-gray-600">¡Hablemos por WhatsApp!</p>
+
+    <form id="contact-form" class="mt-5">
+        <input type="text" id="name" placeholder="Tu nombre" class="border p-2 rounded-md w-full mb-2">
+        <input type="email" id="email" placeholder="Tu correo" class="border p-2 rounded-md w-full mb-2">
+        <textarea id="message" placeholder="Tu mensaje" class="border p-2 rounded-md w-full mb-2"></textarea>
+        <a id="whatsapp-button" class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 cursor-pointer inline-block">
+            Contactar por WhatsApp
+        </a>
+    </form>
+</section>
+
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+</body>
+</html>
