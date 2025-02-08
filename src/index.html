@@ -3,108 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio</title>
+    <title>Mi Portafolio - Andres Fabian Ruiz</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-900">
-
+<body class="bg-gray-900 text-white">
+    
     <!-- Contenedor principal -->
     <div class="max-w-5xl mx-auto px-4 py-10">
-        <h1 class="text-4xl font-bold text-center">¡Hola! Soy <span class="text-blue-500">Andres Fabian Ruiz</span></h1>
-        <p class="text-lg text-center mt-2">Desarrollador Web | JavaScript | Node.js | React</p>
+        <h1 class="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 drop-shadow-lg">
+            ¡Hola! Soy Andres Fabian Ruiz
+        </h1>
+        <p class="text-lg text-center mt-2 text-gray-300 italic">
+            Desarrollador Web | Node.js | PHP | JavaScript | SQL | Express
+        </p>
+        <p class="text-md text-center text-gray-400 mt-4 max-w-3xl mx-auto">
+            Creo páginas y aplicaciones web con tecnologías modernas como Node.js, PHP, Express y SQL. Tengo experiencia en configuración de VPS, gestión de hosting y bases de datos. Me enfoco en combinar diseño atractivo con funcionalidad eficiente.
+        </p>
 
         <!-- Botón de descarga de CV -->
         <div class="text-center mt-5">
-            <a href="public/cv.pdf" download class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-                Descargar CV
-            </a>
+            <a href="public/cv.pdf" download="Andres_Fabian_Ruiz_CV.pdf"
+            class="px-6 py-3 text-lg font-bold rounded-lg shadow-md transition-transform transform hover:scale-105 bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-purple-600 hover:to-blue-600">
+             Descargar CV
+         </a>
+         
         </div>
 
         <!-- Sección de Habilidades -->
-<section class="mt-10 text-center">
-    <h2 class="text-2xl font-semibold">Habilidades</h2>
-    <p class="text-gray-600">Tecnologías y herramientas que utilizo</p>
+        <section class="mt-10 text-center">
+            <h2 class="text-3xl font-semibold text-yellow-400">Habilidades</h2>
+            <p class="text-gray-400">Tecnologías y herramientas que utilizo</p>
+            <div class="grid grid-cols-3 md:grid-cols-5 gap-6 mt-6">
+                <div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-16 h-16">
+                    <span class="text-sm mt-2">HTML</span>
+                </div>
+                <div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-16 h-16">
+                    <span class="text-sm mt-2">CSS</span>
+                </div>
+                <div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-16 h-16">
+                    <span class="text-sm mt-2">JavaScript</span>
+                </div>
+                <div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-16 h-16">
+                    <span class="text-sm mt-2">React</span>
+                </div>
+                <!-- Express -->
+<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" class="w-16 h-16">
+    <span class="text-sm mt-2">Express</span>
+</div>
+<!-- Angular -->
+<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" class="w-16 h-16">
+    <span class="text-sm mt-2">Angular</span>
+</div>
+<!-- Git -->
+<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-16 h-16">
+    <span class="text-sm mt-2">Git</span>
+</div>
+<!-- Docker -->
+<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-16 h-16">
+    <span class="text-sm mt-2">Docker</span>
+</div>
+<!-- VPS -->
+<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="w-16 h-16">
+    <span class="text-sm mt-2">VPS</span>
+</div>
+<!-- Hosting -->
+<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg" class="w-16 h-16">
+    <span class="text-sm mt-2">Hosting</span>
+</div>
+<!-- SQL -->
+<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-16 h-16">
+    <span class="text-sm mt-2">SQL</span>
+</div>
+<!-- Azure -->
+<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" class="w-16 h-16">
+    <span class="text-sm mt-2">Azure</span>
+</div>
+<!-- PHP -->
+<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" class="w-16 h-16">
+    <span class="text-sm mt-2">PHP</span>
+</div>
+<!-- C# -->
+<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" class="w-16 h-16">
+    <span class="text-sm mt-2">C#</span>
+</div>
+<!-- Python -->
+<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-16 h-16">
+    <span class="text-sm mt-2">Python</span>
+</div>
 
-    <div class="flex flex-wrap justify-center gap-6 mt-6">
-        <!-- HTML -->
-        <div class="flex flex-col items-center">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-16 h-16">
-            <span class="text-sm mt-2">HTML</span>
-        </div>
-        <!-- CSS -->
-        <div class="flex flex-col items-center">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-16 h-16">
-            <span class="text-sm mt-2">CSS</span>
-        </div>
-        <!-- JavaScript -->
-        <div class="flex flex-col items-center">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-16 h-16">
-            <span class="text-sm mt-2">JavaScript</span>
-        </div>
-        <!-- TailwindCSS -->
-        <div class="flex flex-col items-center">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-16 h-16">
-            <span class="text-sm mt-2">Tailwind CSS</span>
-        </div>
-        <!-- React -->
-        <div class="flex flex-col items-center">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-16 h-16">
-            <span class="text-sm mt-2">React</span>
-        </div>
-        <!-- Node.js -->
-        <div class="flex flex-col items-center">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="w-16 h-16">
-            <span class="text-sm mt-2">Node.js</span>
-        </div>
-    </div>
-</section>
+            </div>
+        </section>
 
-
-        <!-- Sección de proyectos -->
+        <!-- Sección de Proyectos -->
         <section class="mt-10">
-            <h2 class="text-2xl font-semibold text-center mb-4">Mis Proyectos</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Proyecto 1 -->
-                <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl">
-                    <h3 class="text-xl font-bold">Generador de Contraseñas</h3>
-                    <p class="text-gray-600">Una app que genera contraseñas seguras.</p>
-                    <a href="#" class="text-blue-500 mt-2 block">Ver más</a>
+            <h2 class="text-3xl font-semibold text-yellow-400 text-center">Mis Proyectos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                <div class="bg-gray-800 p-5 rounded-xl shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
+                    <h3 class="text-xl font-bold text-yellow-300">Generador de Contraseñas</h3>
+                    <p class="text-gray-400">Una app que genera contraseñas seguras.</p>
+                    <a href="#" class="text-blue-400 mt-2 block hover:underline">Ver más</a>
                 </div>
-
-                <!-- Proyecto 2 -->
-                <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl">
-                    <h3 class="text-xl font-bold">Buscador de Películas</h3>
-                    <p class="text-gray-600">Aplicación para encontrar películas con la API de TMDB.</p>
-                    <a href="#" class="text-blue-500 mt-2 block">Ver más</a>
+                <div class="bg-gray-800 p-5 rounded-xl shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
+                    <h3 class="text-xl font-bold text-yellow-300">Buscador de Películas</h3>
+                    <p class="text-gray-400">Aplicación para encontrar películas con la API de TMDB.</p>
+                    <a href="#" class="text-blue-400 mt-2 block hover:underline">Ver más</a>
                 </div>
-
-                <!-- Proyecto 3 -->
-                <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl">
-                    <h3 class="text-xl font-bold">Editor de Código en Línea</h3>
-                    <p class="text-gray-600">Un editor web con resaltado de sintaxis.</p>
-                    <a href="#" class="text-blue-500 mt-2 block">Ver más</a>
+                <div class="bg-gray-800 p-5 rounded-xl shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
+                    <h3 class="text-xl font-bold text-yellow-300">Editor de Código en Línea</h3>
+                    <p class="text-gray-400">Un editor web con resaltado de sintaxis.</p>
+                    <a href="#" class="text-blue-400 mt-2 block hover:underline">Ver más</a>
                 </div>
             </div>
         </section>
 
-       <!-- Sección de contacto -->
-<section class="mt-10 text-center">
-    <h2 class="text-2xl font-semibold">Contacto</h2>
-    <p class="text-gray-600">¡Hablemos por WhatsApp!</p>
-
-    <form id="contact-form" class="mt-5">
-        <input type="text" id="name" placeholder="Tu nombre" class="border p-2 rounded-md w-full mb-2">
-        <input type="email" id="email" placeholder="Tu correo" class="border p-2 rounded-md w-full mb-2">
-        <textarea id="message" placeholder="Tu mensaje" class="border p-2 rounded-md w-full mb-2"></textarea>
-        <a id="whatsapp-button" class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 cursor-pointer inline-block">
-            Contactar por WhatsApp
-        </a>
-    </form>
-</section>
-
-
+     <!-- Sección de Contacto -->
+     <section class="mt-10 text-center">
+        <h2 class="text-3xl font-semibold text-yellow-400">Contacto</h2>
+        <p class="text-gray-400">¡Hablemos por WhatsApp o conéctate en LinkedIn!</p>
+        <div class="flex justify-center gap-4 mt-4">
+            <a id="whatsapp-button" 
+               class="inline-flex items-center gap-2 px-6 py-3 text-lg font-bold rounded-lg shadow-md transition-transform transform hover:scale-105 bg-green-500 text-white hover:bg-green-600">
+                <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" class="w-6 h-6"> WhatsApp
+            </a>
+            <a href="https://www.linkedin.com/in/andres-fabian-ruiz-923660346" target="_blank" 
+               class="inline-flex items-center gap-2 px-6 py-3 text-lg font-bold rounded-lg shadow-md transition-transform transform hover:scale-105 bg-blue-700 text-white hover:bg-blue-800">
+                <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" class="w-6 h-6"> LinkedIn
+            </a>
+        </div>
+    </section>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
 </body>
 </html>
