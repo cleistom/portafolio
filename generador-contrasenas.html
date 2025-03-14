@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contraseñas - Andres Fabian Ruiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Botón para volver al menú principal -->
+<div class="text-center mt-10">
+    <a href="index.html" id="back-to-menu" class="inline-flex items-center px-6 py-3 text-lg font-bold text-white bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg shadow-md hover:from-pink-600 hover:to-purple-600 transition-all transform hover:scale-105">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+        </svg>
+        Volver al Menú Principal
+    </a>
+</div>
+    <!-- Contenedor principal -->
+    <div class="max-w-5xl mx-auto px-4 py-10">
+        <h1 class="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 drop-shadow-lg">
+            Generador de Contraseñas
+        </h1>
+        <p class="text-lg text-center mt-2 text-gray-300 italic">
+            Una herramienta para crear contraseñas seguras y personalizadas.
+        </p>
+
+        <!-- Descripción del proyecto -->
+        <section class="mt-10">
+            <h2 class="text-3xl font-semibold text-yellow-400">Acerca del Proyecto</h2>
+            <p class="text-gray-400 mt-4">
+                Este generador de contraseñas es una aplicación web desarrollada con <strong>JavaScript</strong>, <strong>HTML5</strong> y <strong>Tailwind CSS</strong>. Permite a los usuarios crear contraseñas seguras y personalizadas, eligiendo la longitud y los tipos de caracteres (mayúsculas, números y símbolos). Además, incluye una función para copiar la contraseña al portapapeles con un solo clic.
+            </p>
+            <p class="text-gray-400 mt-2">
+                Las tecnologías utilizadas en este proyecto son:
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                <!-- JavaScript -->
+                <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
+                    <img src="https://cdn.simpleicons.org/javascript/F7DF1E" class="w-12 h-12 logo">
+                    <span class="text-gray-300 mt-2">JavaScript</span>
+                    <p class="text-gray-400 text-sm text-center">Lógica del generador</p>
+                </div>
+                <!-- Tailwind CSS -->
+                <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
+                    <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" class="w-12 h-12 logo">
+                    <span class="text-gray-300 mt-2">Tailwind CSS</span>
+                    <p class="text-gray-400 text-sm text-center">Diseño e interfaz</p>
+                </div>
+                <!-- GSAP -->
+                <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
+                    <img src="icons/gsap.png" class="w-12 h-12 logo">
+                    <span class="text-gray-300 mt-2">GSAP</span>
+                    <p class="text-gray-400 text-sm text-center">Animaciones</p>
+                </div>
+                <!-- Clipboard API -->
+                <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
+                    <img src="icons/clipboard.png" class="w-12 h-12 logo">
+                    <span class="text-gray-300 mt-2">Clipboard API</span>
+                    <p class="text-gray-400 text-sm text-center">Copiar al portapapeles</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Generador de Contraseñas -->
+        <section class="mt-10">
+            <h2 class="text-3xl font-semibold text-yellow-400">Generador de Contraseñas</h2>
+            <div class="mt-4">
+                <input type="text" id="password-output" readonly
+                       class="w-full p-2 bg-gray-700 text-white rounded-lg text-center mb-3">
+                <div class="flex justify-between items-center mb-3">
+                    <label for="password-length" class="text-gray-300">Longitud:</label>
+                    <input type="number" id="password-length" min="8" max="32" value="12"
+                           class="w-16 p-1 bg-gray-700 text-white rounded-lg text-center">
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="uppercase" checked class="mr-2">
+                        <span class="text-gray-300">Incluir mayúsculas</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" id="numbers" checked class="mr-2">
+                        <span class="text-gray-300">Incluir números</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" id="symbols" checked class="mr-2">
+                        <span class="text-gray-300">Incluir símbolos</span>
+                    </label>
+                </div>
+                <!-- Botones -->
+                <div class="flex justify-center space-x-4 mt-4">
+                    <button id="generate-password"
+                            class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:from-purple-600 hover:to-blue-600 transition-all flex items-center justify-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+                        </svg>
+                        <span>Generar</span>
+                    </button>
+                    <button id="copy-password"
+                            class="px-4 py-2 bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-lg hover:from-teal-600 hover:to-green-600 transition-all flex items-center justify-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                            <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+                        </svg>
+                        <span>Copiar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    
+
+    <!-- Script para el generador de contraseñas y animaciones -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const passwordOutput = document.getElementById("password-output");
+            const generateButton = document.getElementById("generate-password");
+            const copyButton = document.getElementById("copy-password");
+            const lengthInput = document.getElementById("password-length");
+            const uppercaseCheckbox = document.getElementById("uppercase");
+            const numbersCheckbox = document.getElementById("numbers");
+            const symbolsCheckbox = document.getElementById("symbols");
+
+            // Caracteres para la contraseña
+            const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+            const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const numbers = "0123456789";
+            const symbols = "!@#$%^&*()_+{}[]|:;<>,.?/~";
+
+            // Función para generar la contraseña
+            function generatePassword() {
+                let characters = lowercaseLetters;
+                if (uppercaseCheckbox.checked) characters += uppercaseLetters;
+                if (numbersCheckbox.checked) characters += numbers;
+                if (symbolsCheckbox.checked) characters += symbols;
+
+                let password = "";
+                const length = parseInt(lengthInput.value);
+
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(Math.random() * characters.length);
+                    password += characters[randomIndex];
+                }
+
+                passwordOutput.value = password;
+            }
+
+            // Función para copiar la contraseña
+            function copyPassword() {
+                passwordOutput.select();
+                document.execCommand("copy");
+                alert("Contraseña copiada al portapapeles");
+            }
+
+            // Eventos
+            generateButton.addEventListener("click", generatePassword);
+            copyButton.addEventListener("click", copyPassword);
+
+            // Animaciones con GSAP
+            const logos = document.querySelectorAll(".logo");
+            logos.forEach((logo) => {
+                logo.addEventListener("mouseenter", () => {
+                    gsap.to(logo, {
+                        scale: 1.2,
+                        rotation: 10,
+                        duration: 0.3,
+                        ease: "power2.out",
+                    });
+                });
+
+                logo.addEventListener("mouseleave", () => {
+                    gsap.to(logo, {
+                        scale: 1,
+                        rotation: 0,
+                        duration: 0.3,
+                        ease: "power2.out",
+                    });
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+    // Animación para el botón de regreso
+    const backButton = document.getElementById("back-to-menu");
+
+    gsap.from(backButton, {
+        y: 20, // Mueve el botón hacia abajo inicialmente
+        opacity: 0, // Lo hace transparente al inicio
+        duration: 1, // Duración de la animación
+        ease: "bounce.out", // Efecto de rebote
+        delay: 0.5, // Retraso antes de que comience la animación
+    });
+});
+    </script>
+</body>
+</html>
