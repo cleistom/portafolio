@@ -1,28 +1,23 @@
-# 📌 Mi Portafolio - Andres Fabian Ruiz
+# Portafolio — Andrés Fabián Ruiz
 
-🚀 **Bienvenido a mi portafolio personal**, donde muestro mis habilidades y proyectos en desarrollo web. Este sitio está construido con **HTML, TailwindCSS y JavaScript**.
+Portafolio profesional de Andrés Fabián Ruiz — Ingeniero de Software Full Stack.
 
-## 📄 **Descripción**
-Este portafolio incluye:
-- Una presentación sobre mí y mis habilidades en tecnologías como **Node.js, PHP, JavaScript, SQL, Express y más**.
-- Una sección de proyectos con información sobre mis desarrollos.
-- Un botón para descargar mi **hoja de vida**.
-- Enlaces a **WhatsApp** y **LinkedIn** para conectarnos fácilmente.
+**Live:** https://cleistom.github.io/portafolio/
 
-## 🔧 **Instalación y Uso**
-Si deseas ejecutar este proyecto en tu entorno local, sigue estos pasos:
+## Contenido
 
-### 1️⃣ **Clonar el Repositorio**
-```sh
- git clone https://github.com/cleistom/mi-portafolio.git
-```
+- Hero con perfil y stats
+- Proyectos en producción (dealer de autos, app social, gestión hotelera, seguros, spa, cafetería, reservas, etc.)
+- Stack técnico (frontend, backend, datos, devops)
+- Servicios
+- Contacto (WhatsApp, LinkedIn, GitHub, CV)
 
-### 2️⃣ **Abrir el Proyecto**
-Puedes abrirlo directamente en **Visual Studio Code** o cualquier editor de tu preferencia.
-```sh
- cd mi-portafolio
- code .
-```
+## Stack del sitio
 
-### 3️⃣ **Ejecutar en un Navegador**
-Simplemente **abre `index.html`** en tu navegador o usa Live Server en VS Code para verlo en tiempo real.
+- HTML + CSS + JavaScript vanilla (sin dependencias externas)
+- Google Fonts: Space Grotesk + IBM Plex Mono
+- GitHub Pages para hosting
+
+## Despliegue
+
+Push a `main` → GitHub Pages actualiza automáticamente (branch `main`, root).

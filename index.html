@@ -1,153 +1,462 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio - Andres Fabian Ruiz</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" href="icons/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrés Fabián Ruiz — Ingeniero de Software Full Stack</title>
+<meta name="description" content="Portafolio de Andrés Fabián Ruiz — desarrollo web full stack, aplicaciones móviles, e-commerce y sistemas a medida. 30+ proyectos en producción.">
+<meta property="og:title" content="Andrés Fabián Ruiz — Full Stack Developer">
+<meta property="og:description" content="Portafolio profesional: plataformas web, apps móviles y sistemas a medida.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="icons/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0d10;
+  --bg-soft: #12141a;
+  --card: #161923;
+  --border: #232836;
+  --text: #e8eaf0;
+  --muted: #9aa3b5;
+  --accent: #6ee7b7;   /* verde menta */
+  --accent-2: #fbbf24; /* ámbar */
+  --accent-3: #818cf8; /* índigo */
+  --radius: 14px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: #0c0d10; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+a { color: inherit; text-decoration: none; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(12,13,16,0.85); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-weight: 700; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 28px; font-size: 0.9rem; color: var(--muted); }
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--accent); color: #0c0d10; font-weight: 600;
+  padding: 8px 18px; border-radius: 999px; font-size: 0.85rem;
+  transition: transform 0.15s ease;
+}
+.nav-cta:hover { transform: translateY(-1px); }
+
+/* ===== HERO ===== */
+.hero {
+  padding: 160px 0 90px;
+  background:
+    radial-gradient(600px 300px at 85% 10%, rgba(129,140,248,0.12), transparent 60%),
+    radial-gradient(500px 300px at 10% 30%, rgba(110,231,183,0.08), transparent 60%),
+    var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+  color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
+}
+.hero h1 {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: 1.05; letter-spacing: -0.03em;
+  margin: 18px 0 20px; font-weight: 700;
+}
+.hero h1 .grad {
+  background: linear-gradient(100deg, var(--accent) 10%, var(--accent-3) 90%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 640px; }
+.hero-stats { display: flex; gap: 40px; margin-top: 44px; flex-wrap: wrap; }
+.stat .num {
+  font-size: 2rem; font-weight: 700; letter-spacing: -0.02em;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.stat .lbl { color: var(--muted); font-size: 0.85rem; }
+.hero-actions { display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; border-radius: 999px; font-weight: 600;
+  font-size: 0.95rem; border: 1px solid var(--border);
+  transition: all 0.15s ease; background: var(--bg-soft);
+}
+.btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+.btn-primary { background: var(--accent); color: #0c0d10; border-color: var(--accent); }
+.btn-primary:hover { background: #7ef0c3; }
+.btn-ghost { color: var(--text); }
+
+/* ===== SECCIONES ===== */
+section { padding: 90px 0; }
+.section-head { margin-bottom: 46px; }
+.section-head h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  letter-spacing: -0.02em; margin-top: 8px;
+}
+.section-head p { color: var(--muted); max-width: 560px; margin-top: 10px; }
+
+/* ===== PROYECTOS ===== */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+.project-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 26px;
+  display: flex; flex-direction: column; gap: 14px;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+  position: relative; overflow: hidden;
+}
+.project-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--pc, var(--accent)); opacity: 0.7;
+}
+.project-card:hover { transform: translateY(-4px); border-color: var(--pc, var(--accent)); }
+.project-card .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.project-card h3 { font-size: 1.15rem; letter-spacing: -0.01em; }
+.project-card .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem;
+  padding: 3px 9px; border-radius: 999px; background: var(--bg-soft);
+  border: 1px solid var(--border); color: var(--muted);
+  letter-spacing: 0.03em;
+}
+.project-card p { color: var(--muted); font-size: 0.92rem; flex-grow: 1; }
+.project-card .links { display: flex; gap: 14px; font-size: 0.85rem; font-weight: 600; }
+.project-card .links a { color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 2px; }
+.project-card .links a:hover { color: var(--pc, var(--accent)); border-color: currentColor; }
+.status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 6px; }
+.status-live { color: var(--muted); font-size: 0.75rem; font-family: 'IBM Plex Mono', monospace; }
+
+/* ===== STACK ===== */
+.stack-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+.stack-col { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+.stack-col h3 { font-size: 0.95rem; margin-bottom: 16px; color: var(--accent-2); letter-spacing: 0.04em; text-transform: uppercase; font-family: 'IBM Plex Mono', monospace; }
+.stack-col ul { list-style: none; }
+.stack-col li { padding: 7px 0; border-bottom: 1px dashed var(--border); font-size: 0.92rem; display: flex; justify-content: space-between; gap: 10px; }
+.stack-col li:last-child { border-bottom: none; }
+.stack-col li .lv { color: var(--muted); font-size: 0.78rem; white-space: nowrap; }
+
+/* ===== SERVICIOS ===== */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+.service {
+  background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 26px; transition: border-color 0.18s ease;
+}
+.service:hover { border-color: var(--accent); }
+.service .icon { font-size: 1.6rem; margin-bottom: 14px; }
+.service h3 { font-size: 1.02rem; margin-bottom: 8px; }
+.service p { color: var(--muted); font-size: 0.9rem; }
+
+/* ===== CONTACTO ===== */
+.contact {
+  background: var(--bg-soft); border-top: 1px solid var(--border);
+}
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.contact-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px; display: flex; align-items: center; gap: 14px; transition: all 0.15s ease;
+}
+.contact-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.contact-card .ico { font-size: 1.4rem; }
+.contact-card .t { font-weight: 600; font-size: 0.92rem; }
+.contact-card .s { color: var(--muted); font-size: 0.8rem; }
+
+/* ===== FOOTER ===== */
+footer { border-top: 1px solid var(--border); padding: 36px 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+  .hero { padding: 130px 0 60px; }
+  .hero-stats { gap: 24px; }
+  .projects-grid { grid-template-columns: 1fr; }
+}
+
+/* scroll reveal */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
 </head>
-<body class="bg-gray-900 text-white">
-    
-    <!-- Contenedor principal -->
-    <div class="max-w-5xl mx-auto px-4 py-10">
-        <h1 class="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 drop-shadow-lg">
-            ¡Hola! Soy Andres Fabian Ruiz
-        </h1>
-        <p class="text-lg text-center mt-2 text-gray-300 italic">
-            Desarrollador Web | Node.js | PHP | JavaScript | SQL | Express
-        </p>
-        <p class="text-md text-center text-gray-400 mt-4 max-w-3xl mx-auto">
-            Creo páginas y aplicaciones web con tecnologías modernas como Node.js, PHP, Express y SQL. Tengo experiencia en configuración de VPS, gestión de hosting y bases de datos. Me enfoco en combinar diseño atractivo con funcionalidad eficiente.
-        </p>
+<body>
 
-        <!-- Botón de descarga de CV -->
-        <div class="text-center mt-5">
-            <a href="public/cv.pdf" download="Andres_Fabian_Ruiz_CV.pdf"
-            class="px-6 py-3 text-lg font-bold rounded-lg shadow-md transition-transform transform hover:scale-105 bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-purple-600 hover:to-blue-600">
-             Descargar CV
-         </a>
-         
-        </div>
-
-        <!-- Sección de Habilidades -->
-        <section class="mt-10 text-center">
-            <h2 class="text-3xl font-semibold text-yellow-400">Habilidades</h2>
-            <p class="text-gray-400">Tecnologías y herramientas que utilizo</p>
-            <div class="grid grid-cols-3 md:grid-cols-5 gap-6 mt-6">
-                <div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-16 h-16">
-                    <span class="text-sm mt-2">HTML</span>
-                </div>
-                <div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-16 h-16">
-                    <span class="text-sm mt-2">CSS</span>
-                </div>
-                <div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-16 h-16">
-                    <span class="text-sm mt-2">JavaScript</span>
-                </div>
-                <div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-16 h-16">
-                    <span class="text-sm mt-2">React</span>
-                </div>
-                <!-- Express -->
-<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" class="w-16 h-16">
-    <span class="text-sm mt-2">Express</span>
-</div>
-<!-- Angular -->
-<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" class="w-16 h-16">
-    <span class="text-sm mt-2">Angular</span>
-</div>
-<!-- Git -->
-<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-16 h-16">
-    <span class="text-sm mt-2">Git</span>
-</div>
-<!-- Docker -->
-<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-16 h-16">
-    <span class="text-sm mt-2">Docker</span>
-</div>
-<!-- VPS -->
-<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="w-16 h-16">
-    <span class="text-sm mt-2">VPS</span>
-</div>
-<!-- Hosting -->
-<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg" class="w-16 h-16">
-    <span class="text-sm mt-2">Hosting</span>
-</div>
-<!-- SQL -->
-<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-16 h-16">
-    <span class="text-sm mt-2">SQL</span>
-</div>
-<!-- Azure -->
-<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" class="w-16 h-16">
-    <span class="text-sm mt-2">Azure</span>
-</div>
-<!-- PHP -->
-<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" class="w-16 h-16">
-    <span class="text-sm mt-2">PHP</span>
-</div>
-<!-- C# -->
-<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" class="w-16 h-16">
-    <span class="text-sm mt-2">C#</span>
-</div>
-<!-- Python -->
-<div class="flex flex-col items-center transform transition-transform hover:scale-110 hover:rotate-3 shadow-lg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-16 h-16">
-    <span class="text-sm mt-2">Python</span>
-</div>
-
-            </div>
-        </section>
-
-        <!-- Sección de Proyectos -->
-        <section class="mt-10">
-            <h2 class="text-3xl font-semibold text-yellow-400 text-center">Mis Proyectos</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-                <div class="bg-gray-800 p-5 rounded-xl shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
-                    <h3 class="text-xl font-bold text-yellow-300">Generador de Contraseñas</h3>
-                    <p class="text-gray-400">Una app que genera contraseñas seguras.</p>
-                    <a href="generador-contrasenas.html"  class="text-blue-400 mt-2 block hover:underline">Ver más</a>
-                </div>
-                <div class="bg-gray-800 p-5 rounded-xl shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
-                    <h3 class="text-xl font-bold text-yellow-300">Buscador de Películas</h3>
-                    <p class="text-gray-400">Aplicación para encontrar películas con la API de TMDB.</p>
-                    <a href="buscador-peliculas.html" class="text-blue-400 mt-2 block hover:underline">Ver más</a>
-                </div>
-                <div class="bg-gray-800 p-5 rounded-xl shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
-                    <h3 class="text-xl font-bold text-yellow-300">Editor de Código en Línea</h3>
-                    <p class="text-gray-400">Un editor web con resaltado de sintaxis.</p>
-                    <a href="editor-codigo.html"  class="text-blue-400 mt-2 block hover:underline">Ver más</a>
-                </div>
-            </div>
-        </section>
-
-     <!-- Sección de Contacto -->
-     <section class="mt-10 text-center">
-        <h2 class="text-3xl font-semibold text-yellow-400">Contacto</h2>
-        <p class="text-gray-400">¡Hablemos por WhatsApp o conéctate en LinkedIn!</p>
-        <div class="flex justify-center gap-4 mt-4">
-            <a id="whatsapp-button" href="#"
-            class="inline-flex items-center gap-2 px-6 py-3 text-lg font-bold rounded-lg shadow-md transition-transform transform hover:scale-105 bg-green-500 text-white hover:bg-green-600">
-             <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" class="w-6 h-6"> WhatsApp
-         </a>
-            <a href="https://www.linkedin.com/in/andres-fabian-ruiz-923660346" target="_blank" 
-               class="inline-flex items-center gap-2 px-6 py-3 text-lg font-bold rounded-lg shadow-md transition-transform transform hover:scale-105 bg-blue-700 text-white hover:bg-blue-800">
-                <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" class="w-6 h-6"> LinkedIn
-            </a>
-        </div>
-    </section>
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="logo">AF<span>.</span>ruiz</a>
+    <div class="nav-links">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#stack">Stack</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
     </div>
-    <script src="src/main.js"></script>
+    <a href="public/cv.pdf" class="nav-cta" download>Descargar CV</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <p class="eyebrow">Ingeniero de Software · Full Stack</p>
+    <h1>Construyo <span class="grad">plataformas digitales</span> completas, del backend al pixel final.</h1>
+    <p class="lead">
+      Desarrollo web full stack, aplicaciones móviles y sistemas a medida para empresas.
+      De la idea al deploy: arquitectura, base de datos, API, frontend y DevOps.
+    </p>
+    <div class="hero-actions">
+      <a href="#proyectos" class="btn btn-primary">Ver proyectos ↓</a>
+      <a href="#contacto" class="btn btn-ghost">Hablemos</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">30+</div><div class="lbl">proyectos construidos</div></div>
+      <div class="stat"><div class="num">25+</div><div class="lbl">sitios en producción</div></div>
+      <div class="stat"><div class="num">10+</div><div class="lbl">tecnologías dominadas</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">plataformas móviles</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="proyectos">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Trabajo seleccionado</p>
+      <h2>Proyectos en producción</h2>
+      <p>Plataformas reales que uso la gente todos los días: e-commerce, gestión hotelera, apps sociales, sistemas de reservas y más.</p>
+    </div>
+    <div class="projects-grid">
+
+      <article class="project-card reveal" style="--pc:#6ee7b7">
+        <div class="top">
+          <h3>Keys Motors — Dealer de autos</h3>
+          <span class="status-live"><span class="status-dot"></span>LIVE</span>
+        </div>
+        <p>Plataforma de concesionario con <strong>159+ vehículos</strong> sincronizados automáticamente desde Dealer Car Search (scraper + API + leads). Catálogo, VDP, cotizaciones, ofertas y WhatsApp.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">PHP</span><span class="tag">Scraper</span><span class="tag">CI</span></div>
+        <div class="links"><a href="https://keysmotorsusedcars.com" target="_blank" rel="noopener">Ver sitio ↗</a></div>
+      </article>
+
+      <article class="project-card reveal" style="--pc:#818cf8">
+        <div class="top">
+          <h3>ENGANCHE — App social</h3>
+          <span class="status-live"><span class="status-dot" style="background:var(--accent-2)"></span>EN DESARROLLO</span>
+        </div>
+        <p>App social hiperlocal con radar, matches y chat en tiempo real. Backend en Fastify + PostgreSQL/PostGIS + Redis, apps nativas iOS (SwiftUI) y Android (Kotlin).</p>
+        <div class="tags"><span class="tag">Fastify</span><span class="tag">SwiftUI</span><span class="tag">Kotlin</span><span class="tag">PostGIS</span><span class="tag">Redis</span><span class="tag">Docker</span></div>
+      </article>
+
+      <article class="project-card reveal" style="--pc:#fbbf24">
+        <div class="top">
+          <h3>Hotel San Fernando Real</h3>
+          <span class="status-live"><span class="status-dot"></span>LIVE</span>
+        </div>
+        <p>Sistema de gestión hotelera completo: reservas, huéspedes, facturación, grupos, housekeeping y mantenimiento. Next.js + Prisma + PostgreSQL.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span><span class="tag">shadcn/ui</span></div>
+        <div class="links"><a href="https://hotelsanfernandoreal.com" target="_blank" rel="noopener">Ver sitio ↗</a></div>
+      </article>
+
+      <article class="project-card reveal" style="--pc:#6ee7b7">
+        <div class="top">
+          <h3>Lumina Insurance Group</h3>
+          <span class="status-live"><span class="status-dot"></span>LIVE</span>
+        </div>
+        <p>Sitio corporativo bilingüe (EN/ES) para agencia de seguros en Spartanburg, SC. Optimizado para conversión y previsualización en redes.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">i18n</span></div>
+        <div class="links"><a href="https://luminainsurancegroup.com" target="_blank" rel="noopener">Ver sitio ↗</a></div>
+      </article>
+
+      <article class="project-card reveal" style="--pc:#818cf8">
+        <div class="top">
+          <h3>Albalash Spa</h3>
+          <span class="status-live"><span class="status-dot"></span>LIVE</span>
+        </div>
+        <p>Plataforma de spa: sitio informativo, sistema de reservas, academia digital y panel de administración. Pagos con Stripe.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">Stripe</span></div>
+        <div class="links"><a href="https://albalash.com" target="_blank" rel="noopener">Ver sitio ↗</a></div>
+      </article>
+
+      <article class="project-card reveal" style="--pc:#fbbf24">
+        <div class="top">
+          <h3>Buongiorno Coffee</h3>
+          <span class="status-live"><span class="status-dot"></span>LIVE</span>
+        </div>
+        <p>Sistema de cafetería: menú con QR, carrito de pedidos y panel admin. Integra impresión térmica para el punto de venta.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span><span class="tag">POS</span></div>
+      </article>
+
+      <article class="project-card reveal" style="--pc:#6ee7b7">
+        <div class="top">
+          <h3>HISESA — Seguridad Industrial</h3>
+          <span class="status-live"><span class="status-dot"></span>LIVE</span>
+        </div>
+        <p>Web corporativa de seguridad industrial y salud ocupacional + módulo SG-SST con gestión documental. Pagos con Wompi.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">Neon PG</span><span class="tag">Drizzle</span><span class="tag">Wompi</span><span class="tag">R2</span></div>
+      </article>
+
+      <article class="project-card reveal" style="--pc:#818cf8">
+        <div class="top">
+          <h3>Parcelación Chorro Limpio</h3>
+          <span class="status-live"><span class="status-dot"></span>LIVE</span>
+        </div>
+        <p>Sitio de venta de lotes campestres en Antioquia: galería, recorrido 360°, video drone y formulario de contacto.</p>
+        <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">JS</span><span class="tag">PHP</span></div>
+        <div class="links"><a href="https://parcelacionchorrolimpio.com" target="_blank" rel="noopener">Ver sitio ↗</a></div>
+      </article>
+
+      <article class="project-card reveal" style="--pc:#fbbf24">
+        <div class="top">
+          <h3>Miami Acura — Dealer</h3>
+          <span class="status-live"><span class="status-dot"></span>LIVE</span>
+        </div>
+        <p>Plataforma de concesionario Acura con inventario, filtros avanzados (precio, millas, año, transmisión) y dark/light mode.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Tailwind</span></div>
+      </article>
+
+      <article class="project-card reveal" style="--pc:#6ee7b7">
+        <div class="top">
+          <h3>Sistemas de reservas PHP</h3>
+          <span class="status-live"><span class="status-dot"></span>LIVE</span>
+        </div>
+        <p>Dos plataformas de reservas para apartasuites (La Flora y Granada) con panel admin, gestión de reservas y edición desde el navegador.</p>
+        <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Admin panel</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="stack" style="background:var(--bg-soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Tecnologías</p>
+      <h2>Stack que domino</h2>
+      <p>No solo "conozco" estas tecnologías: he desplegado proyectos completos con ellas en producción.</p>
+    </div>
+    <div class="stack-cols">
+      <div class="stack-col reveal">
+        <h3>Frontend</h3>
+        <ul>
+          <li>React / Next.js <span class="lv">Avanzado</span></li>
+          <li>TypeScript <span class="lv">Avanzado</span></li>
+          <li>Tailwind CSS / shadcn <span class="lv">Avanzado</span></li>
+          <li>SwiftUI (iOS) <span class="lv">Intermedio</span></li>
+          <li>Kotlin / Compose <span class="lv">Intermedio</span></li>
+        </ul>
+      </div>
+      <div class="stack-col reveal">
+        <h3>Backend</h3>
+        <ul>
+          <li>Node.js / Fastify / Express <span class="lv">Avanzado</span></li>
+          <li>PHP <span class="lv">Avanzado</span></li>
+          <li>REST APIs <span class="lv">Avanzado</span></li>
+          <li>WebSockets / tiempo real <span class="lv">Intermedio</span></li>
+          <li>Python <span class="lv">Intermedio</span></li>
+        </ul>
+      </div>
+      <div class="stack-col reveal">
+        <h3>Datos</h3>
+        <ul>
+          <li>PostgreSQL / PostGIS <span class="lv">Avanzado</span></li>
+          <li>MySQL <span class="lv">Avanzado</span></li>
+          <li>Prisma / Drizzle ORM <span class="lv">Avanzado</span></li>
+          <li>Redis <span class="lv">Intermedio</span></li>
+          <li>Neon (serverless PG) <span class="lv">Avanzado</span></li>
+        </ul>
+      </div>
+      <div class="stack-col reveal">
+        <h3>DevOps & Cloud</h3>
+        <ul>
+          <li>Docker <span class="lv">Avanzado</span></li>
+          <li>CI/CD (GitHub Actions) <span class="lv">Avanzado</span></li>
+          <li>Azure DevOps <span class="lv">Avanzado</span></li>
+          <li>Linux / VPS / Nginx <span class="lv">Avanzado</span></li>
+          <li>Hostinger / Cloudflare R2 <span class="lv">Avanzado</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Qué hago</p>
+      <h2>Servicios</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service reveal"><div class="icon">🌐</div><h3>Desarrollo web</h3><p>Sitios corporativos, landing pages y aplicaciones web completas con React, Next.js o PHP.</p></div>
+      <div class="service reveal"><div class="icon">📱</div><h3>Apps móviles</h3><p>Aplicaciones nativas iOS y Android conectadas a tu backend.</p></div>
+      <div class="service reveal"><div class="icon">🛒</div><h3>E-commerce</h3><p>Tiendas online con catálogo, carrito, pagos (Stripe, Wompi) e inventario.</p></div>
+      <div class="service reveal"><div class="icon">🗄️</div><h3>Sistemas a medida</h3><p>Reservas, gestión hotelera, paneles admin, facturación y más.</p></div>
+      <div class="service reveal"><div class="icon">🤖</div><h3>Automatización</h3><p>Scrapers, sincronización de inventario, integraciones con APIs de terceros.</p></div>
+      <div class="service reveal"><div class="icon">🚀</div><h3>DevOps & deploy</h3><p>Docker, CI/CD, VPS, dominios, SSL, migraciones y monitoreo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Contacto</p>
+      <h2>¿Tienes un proyecto en mente?</h2>
+      <p>Hablemos: te ayudo a llevarlo de la idea a producción.</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card reveal" href="https://wa.me/573216092561" target="_blank" rel="noopener">
+        <span class="ico">💬</span>
+        <div><div class="t">WhatsApp</div><div class="s">+57 321 609 2561</div></div>
+      </a>
+      <a class="contact-card reveal" href="https://www.linkedin.com/in/andres-fabian-ruiz-923660346" target="_blank" rel="noopener">
+        <span class="ico">🔗</span>
+        <div><div class="t">LinkedIn</div><div class="s">andres-fabian-ruiz</div></div>
+      </a>
+      <a class="contact-card reveal" href="https://github.com/cleistom" target="_blank" rel="noopener">
+        <span class="ico">🐙</span>
+        <div><div class="t">GitHub</div><div class="s">github.com/cleistom</div></div>
+      </a>
+      <a class="contact-card reveal" href="public/cv.pdf" download>
+        <span class="ico">📄</span>
+        <div><div class="t">Descargar CV</div><div class="s">PDF</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Andrés Fabián Ruiz · Construido y desplegado a mano, de principio a fin.</p>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Año en footer
+// (dejar estático 2026)
+
+// Navegación con offset por navbar fija
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href');
+    if (id.length > 1) {
+      const target = document.querySelector(id);
+      if (target) {
+        e.preventDefault();
+        const y = target.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  });
+});
+</script>
 </body>
 </html>
