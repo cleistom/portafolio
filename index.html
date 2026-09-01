@@ -115,6 +115,56 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
 .hero-code__cursor { display:inline-block; width:.6em; height:1.1em; background:var(--bright-pink); vertical-align:middle; animation:blink 1s steps(2) infinite; }
 @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
 
+/* ===== HERO FLOATS (efecto 3D) ===== */
+.hero__visual { perspective: 800px; }
+.hero-float { position: absolute; z-index: 5; pointer-events: none; }
+.hero-float.is--below { bottom: -2.5em; left: -4em; z-index: 3; }
+.hero-float.is--above { top: -3em; right: -2.5em; z-index: 8; }
+.float-card {
+  background: #fff; border-radius: 1.2em; padding: 1.2em 1.4em;
+  box-shadow: 0 24px 60px rgba(0,0,0,.35); width: 15em;
+  border: 1px solid #eee; transform: rotate(-6deg);
+}
+.float-card__head { display: flex; gap: .4em; margin-bottom: 1em; }
+.float-card__head span { width: .7em; height: .7em; border-radius: 50%; }
+.float-card__row { display: flex; align-items: center; gap: .7em; padding: .45em 0; border-bottom: 1px dashed #eee; }
+.float-card__row:last-child { border-bottom: none; }
+.float-card__row img { width: 1.4em; height: 1.4em; object-fit: contain; }
+.float-card__row span { flex: 1; font-weight: 600; font-size: .9em; }
+.float-card__row b { font-family: 'Menlo', monospace; font-size: .8em; color: #888; }
+.float-chip {
+  background: var(--black); color: #fff; border-radius: 999px;
+  padding: .8em 1.3em; display: flex; align-items: center; gap: .7em;
+  box-shadow: 0 18px 50px rgba(0,0,0,.4); transform: rotate(4deg);
+  font-family: 'Menlo', monospace; font-size: .85em; white-space: nowrap;
+}
+.float-chip img { width: 1.5em; height: 1.5em; object-fit: contain; }
+.float-chip__ok { color: var(--green); font-weight: 700; }
+@media (max-width:900px) {
+  .hero-float.is--below { left: -1em; }
+  .hero-float.is--above { right: 0; top: -1.5em; }
+  .float-card { width: 12em; }
+}
+
+/* ===== WHATSAPP FLOTANTE ===== */
+.wa-float {
+  position: fixed; bottom: 1.6em; right: 1.6em; z-index: 2000;
+  width: 3.8em; height: 3.8em; border-radius: 50%;
+  background: #25d366; display: grid; place-items: center;
+  box-shadow: 0 10px 30px rgba(37,211,102,.45);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.wa-float:hover { transform: scale(1.1); box-shadow: 0 14px 40px rgba(37,211,102,.6); }
+.wa-float svg { width: 2em; height: 2em; fill: #fff; }
+.wa-float::after {
+  content: ''; position: absolute; inset: -4px; border-radius: 50%;
+  border: 2px solid rgba(37,211,102,.5); animation: wa-pulse 2s infinite;
+}
+@keyframes wa-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
 /* ===== PROYECTOS ===== */
 .books { z-index:1; clip-path:inset(0 round 0 0 10em 10em); position:relative; overflow:clip; background-color:var(--white); margin-top:calc(var(--grid-margin)*-1); }
 .books__header { padding-top:8em; }
@@ -206,61 +256,6 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
 .benefit-card h3 { font-family:'Champ',Arial,sans-serif; font-size:1.8em; line-height:.9; margin-top:.3em; }
 .benefit-card p { color:#bbb; font-size:1.05em; line-height:1.4; }
 
-/* ===== FAQ ===== */
-.faq { clip-path:inset(0% round 0 0 10em 10em); background-color:var(--white); position:relative; overflow:clip; margin-bottom:calc(var(--grid-margin)*-1); }
-.faq__container { max-width:1440px; margin:0 auto; padding:8em var(--grid-margin) 10em; }
-.faq__header { text-align:center; margin-bottom:4em; }
-.faq__title { font-size:var(--fs-l); }
-.faq__content { max-width:56em; margin:0 auto; display:grid; gap:1em; }
-.accordion__details { background-color:var(--soft-blue); border-radius:1.5em; width:100%; position:relative; overflow:clip; }
-.accordion__details.is--pink { background-color:var(--soft-pink); }
-.accordion__details.is--yellow { background-color:var(--pale-yellow); }
-.accordion__summary { cursor:pointer; user-select:none; list-style:none; }
-.accordion__summary::-webkit-details-marker { display:none; }
-.accordion__title-wrap { display:flex; justify-content:space-between; align-items:center; gap:2em; padding:1.75em 2em; }
-.accordion__title { font-size:var(--fs-pr); font-weight:600; }
-.accordion__icon-wrap { flex-shrink:0; display:grid; place-items:center; }
-.accordion__icon-plus, .accordion__icon-minus { width:1.6em; height:1.6em; grid-area:1/1; transition:opacity .25s ease, transform .25s ease; }
-.accordion__icon-minus { opacity:0; transform:rotate(-90deg); }
-.accordion__details[open] .accordion__icon-plus { opacity:0; transform:rotate(90deg); }
-.accordion__details[open] .accordion__icon-minus { opacity:1; transform:rotate(0); }
-.accordion__content { padding:0 2em 2em; }
-.accordion__content-inner { max-width:46em; }
-.accordion__content-inner p { font-size:1.2em; line-height:1.4; color:#333; }
-
-/* ===== TAGLINE CURVA ===== */
-.gift { position:relative; overflow:clip; background:var(--white); }
-.tagline-curve { position:relative; padding-top:6em; }
-.tagline-curve__wrap { overflow:visible; }
-.tagline-curve__svg { width:100%; height:auto; color:var(--black); transform:translateY(50%) scale(1.1); overflow:visible !important; }
-.tagline-curve__svg text { font-family:'Champ',Arial,sans-serif; font-size:7em; letter-spacing:-.01em; }
-.gift__container { max-width:1440px; margin:0 auto; padding:12em var(--grid-margin) 8em; }
-.gift__inner { display:flex; align-items:center; gap:4em; }
-.gift__content { flex:1; }
-.gift__content-paragraph { font-size:var(--fs-pm); max-width:30ch; }
-.gift__cta-wrap { margin-top:3em; display:flex; align-items:center; gap:1.5em; }
-.gift__visual { flex:1; display:flex; justify-content:center; }
-.gift-code {
-  background:var(--black); border-radius:1.8em; padding:1.8em 1.6em 1.6em;
-  box-shadow:0 30px 80px rgba(0,0,0,.3); transform:rotate(-2deg);
-  font-family:'Menlo',monospace; font-size:.85em; line-height:1.55; width:100%; max-width:26em;
-  position:relative; overflow:hidden;
-}
-.gift-code::before {
-  content:''; position:absolute; inset:0;
-  background:radial-gradient(300px 150px at 20% 0%, rgba(28,232,237,.15), transparent 60%),
-             radial-gradient(250px 150px at 90% 100%, rgba(45,225,36,.12), transparent 60%);
-  pointer-events:none;
-}
-.gift-code__dots { display:flex; gap:.45em; margin-bottom:1.2em; }
-.gift-code__dot { width:.8em; height:.8em; border-radius:50%; }
-.gift-code__line { color:#e8e8e8; white-space:pre; }
-.gift-code__line .c-kw { color:#fd48f2; }
-.gift-code__line .c-fn { color:#a4f6f8; }
-.gift-code__line .c-str { color:#2de124; }
-.gift-code__line .c-com { color:#666; }
-.gift-code__line .c-brace { color:#f9a220; }
-
 /* ===== MARQUEE ===== */
 .badge { background:var(--black); overflow:clip; padding:4em 0; }
 .badge__track { display:flex; width:max-content; animation:badge-scroll 30s linear infinite; }
@@ -301,7 +296,6 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
   .hero__inner { flex-direction:column; gap:3em; padding:8em var(--grid-margin) 5em; }
   .hero__visual { width:100%; }
   .flow__header { flex-direction:column; align-items:flex-start; }
-  .gift__inner { flex-direction:column; }
   .genre__grid { grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); }
 }
 </style>
@@ -320,7 +314,6 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
     <nav class="header__nav">
       <a data-button href="#proyectos" class="button"><span class="button__bg"></span><span class="button__inner"><span class="button__text" data-i18n="navProjects">Proyectos</span></span></a>
       <a data-button href="#stack" class="button"><span class="button__bg"></span><span class="button__inner"><span class="button__text" data-i18n="navStack">Stack</span></span></a>
-      <a data-button href="#faq" class="button"><span class="button__bg"></span><span class="button__inner"><span class="button__text" data-i18n="navFaq">FAQ</span></span></a>
       <button class="lang-switch" id="langSwitch" aria-label="Switch language">
         <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         <span id="langLabel">EN</span>
@@ -335,7 +328,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
   <section data-intro-home class="hero">
     <div class="hero__inner u-container">
       <div class="hero__content">
-        <h1 class="hero__title" data-i18n="heroTitle">Construyo plataformas digitales <em>de punta a punta</em></h1>
+        <h1 class="hero__title" data-i18n="heroTitle">Construyo plataformas digitales <em>a la medida</em></h1>
         <p class="hero__paragraph" data-i18n="heroParagraph">Desarrollador de Software Full Stack. Web, apps móviles y sistemas a medida — de la idea al deploy, sin rodeos.</p>
         <div class="hero__cta-wrap">
           <a data-button-alt href="#proyectos" class="button-alt">
@@ -355,7 +348,24 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
           <div class="hero__text-outer"><p class="u-handwritten-regular" data-i18n="heroHand">Disponible para proyectos</p></div>
         </div>
       </div>
-      <div class="hero__visual">
+      <div class="hero__visual" data-hero-stage>
+        <!-- Elemento flotante inferior (pasa por debajo del texto, parallax lento) -->
+        <div class="hero-float is--below" data-hero-float-b>
+          <div class="float-card">
+            <div class="float-card__head"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></div>
+            <div class="float-card__row"><img src="logos/tech/react.svg" alt=""><span>React</span><b>19</b></div>
+            <div class="float-card__row"><img src="logos/tech/nextjs.svg" alt=""><span>Next.js</span><b>15</b></div>
+            <div class="float-card__row"><img src="logos/tech/typescript.svg" alt=""><span>TypeScript</span><b>5.7</b></div>
+          </div>
+        </div>
+        <!-- Elemento flotante superior (toca el título y se corre, parallax rápido) -->
+        <div class="hero-float is--above" data-hero-float-a>
+          <div class="float-chip">
+            <img src="logos/tech/docker.svg" alt="">
+            <span>docker compose up -d</span>
+            <span class="float-chip__ok">✓</span>
+          </div>
+        </div>
         <div class="hero-code" aria-hidden="true">
           <div class="hero-code__dots">
             <span class="hero-code__dot" style="background:#ff5f57"></span>
@@ -510,7 +520,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
               <span class="flow__card-step" data-i18n="flowStep1">Paso #1</span>
               <h3 class="flow__card-title" data-i18n="flowCard1">Entiendo el negocio</h3>
               <p class="flow__card-text" data-i18n="flowCard1t">Escucho qué necesitas, analizo el problema y propongo la mejor solución técnica.</p>
-              <img src="logos/tech/react.svg" loading="lazy" alt="Paso 1" class="flow__card-illustration" style="background:rgba(255,255,255,.5);border-radius:1em;padding:1em">
+              <img src="step1.webp" loading="lazy" alt="Paso 1" class="flow__card-illustration">
             </div>
           </div>
           <div class="flow__list-item">
@@ -518,7 +528,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
               <span class="flow__card-step" style="color:rgba(255,255,255,.7)" data-i18n="flowStep2">Paso #2</span>
               <h3 class="flow__card-title" data-i18n="flowCard2">Arquitectura y diseño</h3>
               <p class="flow__card-text" data-i18n="flowCard2t">Defino la base de datos, la API y el frontend. Base sólida desde el día uno.</p>
-              <img src="logos/tech/postgresql.svg" loading="lazy" alt="Paso 2" class="flow__card-illustration" style="background:rgba(255,255,255,.25);border-radius:1em;padding:1em">
+              <img src="step2.webp" loading="lazy" alt="Paso 2" class="flow__card-illustration">
             </div>
           </div>
           <div class="flow__list-item">
@@ -526,7 +536,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
               <span class="flow__card-step" data-i18n="flowStep3">Paso #3</span>
               <h3 class="flow__card-title" data-i18n="flowCard3">Desarrollo e iteración</h3>
               <p class="flow__card-text" data-i18n="flowCard3t">Construyo con entregas constantes. Te mantengo al tanto de cada avance.</p>
-              <img src="logos/tech/typescript.svg" loading="lazy" alt="Paso 3" class="flow__card-illustration" style="background:rgba(255,255,255,.5);border-radius:1em;padding:1em">
+              <img src="step3.webp" loading="lazy" alt="Paso 3" class="flow__card-illustration">
             </div>
           </div>
           <div class="flow__list-item">
@@ -534,7 +544,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
               <span class="flow__card-step" data-i18n="flowStep4">Paso #4</span>
               <h3 class="flow__card-title" data-i18n="flowCard4">Deploy y soporte</h3>
               <p class="flow__card-text" data-i18n="flowCard4t">Despliego en producción, configuro dominio y SSL, y me aseguro de que siga funcionando.</p>
-              <img src="logos/tech/docker.svg" loading="lazy" alt="Paso 4" class="flow__card-illustration" style="background:rgba(255,255,255,.5);border-radius:1em;padding:1em">
+              <img src="step4.webp" loading="lazy" alt="Paso 4" class="flow__card-illustration">
             </div>
           </div>
         </div>
@@ -570,6 +580,12 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
         <div class="genre__item"><img src="logos/tech/linux.svg" alt="Linux" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Linux</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
         <div class="genre__item"><img src="logos/tech/nginx.svg" alt="Nginx" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Nginx</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
         <div class="genre__item"><img src="logos/tech/github.svg" alt="GitHub" class="genre__item-logo" loading="lazy"><span class="genre__item-name">GitHub</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
+        <div class="genre__item"><img src="logos/tech/azure.svg" alt="Azure" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Azure</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
+        <div class="genre__item"><img src="logos/tech/python.svg" alt="Python" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Python</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
+        <div class="genre__item"><img src="logos/tech/aws.svg" alt="AWS" class="genre__item-logo" loading="lazy"><span class="genre__item-name">AWS</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
+        <div class="genre__item"><img src="logos/tech/oracle.svg" alt="Oracle" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Oracle</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
+        <div class="genre__item"><img src="logos/tech/mongodb.svg" alt="MongoDB" class="genre__item-logo" loading="lazy"><span class="genre__item-name">MongoDB</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
+        <div class="genre__item"><img src="logos/tech/kubernetes.svg" alt="Kubernetes" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Kubernetes</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
       </div>
     </div>
   </section>
@@ -600,117 +616,6 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
           <span class="num">04</span>
           <h3 data-i18n="b4t">Soporte post-deploy</h3>
           <p data-i18n="b4d">Tu sitio no se abandona al lanzar: backups, actualizaciones, monitoreo y nuevas funciones cuando las pidas.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FAQ ===== -->
-  <section id="faq" class="faq">
-    <div class="faq__container u-container">
-      <header class="faq__header">
-        <h2 class="faq__title" data-i18n="faqTitle">Preguntas frecuentes</h2>
-      </header>
-      <div class="faq__content">
-        <details data-accordion class="accordion__details">
-          <summary class="accordion__summary">
-            <span class="accordion__title-wrap">
-              <h3 class="accordion__title" data-i18n="q1">¿Qué tipo de proyectos haces?</h3>
-              <span class="accordion__icon-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" width="100%" class="accordion__icon-plus"><path fill="currentColor" d="M7.84 18.8v-7H1.12V7.88h6.72V.96h4.32v6.92h6.76v3.92h-6.76v7z"></path></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" width="100%" class="accordion__icon-minus"><path fill="currentColor" d="M3.8 7.9h12.4v4.04H3.8z"></path></svg>
-              </span>
-            </span>
-          </summary>
-          <div class="accordion__content"><div class="accordion__content-inner"><p data-i18n="a1">Sitios corporativos, e-commerce, sistemas de reservas, gestión hotelera, apps móviles, paneles admin y automatizaciones. Todo con stack moderno y desplegado en producción.</p></div></div>
-        </details>
-        <details data-accordion class="accordion__details is--pink">
-          <summary class="accordion__summary">
-            <span class="accordion__title-wrap">
-              <h3 class="accordion__title" data-i18n="q2">¿Cuánto tarda un proyecto?</h3>
-              <span class="accordion__icon-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" width="100%" class="accordion__icon-plus"><path fill="currentColor" d="M7.84 18.8v-7H1.12V7.88h6.72V.96h4.32v6.92h6.76v3.92h-6.76v7z"></path></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" width="100%" class="accordion__icon-minus"><path fill="currentColor" d="M3.8 7.9h12.4v4.04H3.8z"></path></svg>
-              </span>
-            </span>
-          </summary>
-          <div class="accordion__content"><div class="accordion__content-inner"><p data-i18n="a2">Una landing page puede estar lista en 1-2 semanas; una plataforma completa (reservas, e-commerce, panel admin) suele tomar 3-8 semanas según el alcance.</p></div></div>
-        </details>
-        <details data-accordion class="accordion__details is--yellow">
-          <summary class="accordion__summary">
-            <span class="accordion__title-wrap">
-              <h3 class="accordion__title" data-i18n="q3">¿Incluyes el hosting y el dominio?</h3>
-              <span class="accordion__icon-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" width="100%" class="accordion__icon-plus"><path fill="currentColor" d="M7.84 18.8v-7H1.12V7.88h6.72V.96h4.32v6.92h6.76v3.92h-6.76v7z"></path></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" width="100%" class="accordion__icon-minus"><path fill="currentColor" d="M3.8 7.9h12.4v4.04H3.8z"></path></svg>
-              </span>
-            </span>
-          </summary>
-          <div class="accordion__content"><div class="accordion__content-inner"><p data-i18n="a3">Sí. Configuro el servidor, dominio, SSL y CI/CD. Tu sitio queda en producción funcionando, no en una carpeta olvidada.</p></div></div>
-        </details>
-        <details data-accordion class="accordion__details is--pink">
-          <summary class="accordion__summary">
-            <span class="accordion__title-wrap">
-              <h3 class="accordion__title" data-i18n="q4">¿Das soporte después del lanzamiento?</h3>
-              <span class="accordion__icon-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" width="100%" class="accordion__icon-plus"><path fill="currentColor" d="M7.84 18.8v-7H1.12V7.88h6.72V.96h4.32v6.92h6.76v3.92h-6.76v7z"></path></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" width="100%" class="accordion__icon-minus"><path fill="currentColor" d="M3.8 7.9h12.4v4.04H3.8z"></path></svg>
-              </span>
-            </span>
-          </summary>
-          <div class="accordion__content"><div class="accordion__content-inner"><p data-i18n="a4">Sí, ofrezco soporte y mantenimiento continuo: actualizaciones, backups, monitoreo y nuevas funciones cuando las necesites.</p></div></div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TAGLINE CURVA ===== -->
-  <section data-tagline-curve class="gift">
-    <header class="tagline-curve">
-      <div class="tagline-curve__header">
-        <h2 class="tagline-curve__title u-screen-reader" data-i18n="curveTitle">Tu proyecto, en producción</h2>
-      </div>
-      <div class="tagline-curve__wrap">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 288" fill="none" class="tagline-curve__svg">
-          <path d="M-165.5 288 C33.686 173 810 0 1304 0 C1797.99 0 2262.5 178.181 2741.5 272" id="path" stroke="none"></path>
-          <text id="text"><textPath id="textpath" href="#path" startOffset="100%" text-anchor="start">Tu proyecto, en producción</textPath></text>
-        </svg>
-      </div>
-    </header>
-    <div class="gift__container u-container">
-      <div class="gift__inner">
-        <div class="gift__content">
-          <p class="gift__content-paragraph u-paragraph-medium" data-i18n="giftText">Tu idea no se queda en un mockup: se convierte en un producto real, desplegado y en uso.</p>
-          <div class="gift__cta-wrap">
-            <img src="icons/favicon.png" loading="lazy" alt="Logo" class="flow__cta-logo">
-            <a data-button-alt href="https://wa.me/573216092561" target="_blank" rel="noopener" class="button-alt">
-              <span class="button-alt__text-wrap">
-                <span class="button-alt__bg"></span>
-                <span class="button-alt__text-outer"><span class="button-alt__text" data-i18n="giftCta">Hablemos por WhatsApp</span></span>
-              </span>
-              <span class="button-alt__icon-wrap">
-                <span class="button-alt__bg"></span>
-                <span class="button-alt__icon-outer">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 14 13" fill="none" class="button-alt__icon"><path d="M13.58 5.66v.845l-5.994 5.66-1.71-2.063a61.427 61.427 0 0 1 4.265-2.988l-.02-.078c-1.828.196-4.107.294-6.387.294H0V4.835h3.734c2.28 0 4.56.098 6.387.294l.02-.059a67.638 67.638 0 0 1-4.265-3.006L7.586 0l5.994 5.66Z" fill="currentColor"></path></svg>
-                </span>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="gift__visual">
-          <div class="gift-code" aria-hidden="true">
-            <div class="gift-code__dots">
-              <span class="gift-code__dot" style="background:#ff5f57"></span>
-              <span class="gift-code__dot" style="background:#febc2e"></span>
-              <span class="gift-code__dot" style="background:#28c840"></span>
-            </div>
-            <div class="gift-code__line"><span class="c-com"># deploy pipeline</span></div>
-            <div class="gift-code__line"><span class="c-kw">steps</span><span class="c-brace">:</span></div>
-            <div class="gift-code__line">  <span class="c-brace">-</span> <span class="c-fn">build</span>: <span class="c-str">npm run build</span></div>
-            <div class="gift-code__line">  <span class="c-brace">-</span> <span class="c-fn">test</span>: <span class="c-str">npm run test</span></div>
-            <div class="gift-code__line">  <span class="c-brace">-</span> <span class="c-fn">deploy</span>: <span class="c-str">docker compose up -d</span></div>
-            <div class="gift-code__line">  <span class="c-brace">-</span> <span class="c-fn">notify</span>: <span class="c-str">'🚀 live!'</span></div>
-          </div>
         </div>
       </div>
     </div>
@@ -791,7 +696,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
 const i18n = {
   es: {
     brand: 'Andrés Fabián Ruiz', navProjects: 'Proyectos', navStack: 'Stack', navFaq: 'FAQ',
-    heroTitle: 'Construyo plataformas digitales <em>de punta a punta</em>',
+    heroTitle: 'Construyo plataformas digitales <em>a la medida</em>',
     heroParagraph: 'Desarrollador de Software Full Stack. Web, apps móviles y sistemas a medida — de la idea al deploy, sin rodeos.',
     heroCta: 'Ver proyectos', heroHand: 'Disponible para proyectos',
     projectsTitle: 'Proyectos en producción', projectsSub: 'Plataformas reales que la gente usa todos los días. Cada proyecto, del código al servidor.',
@@ -813,19 +718,15 @@ const i18n = {
     b2t: 'Productos reales en uso', b2d: 'No hago demos de juguete: cada proyecto en este portafolio está en producción y lo usa gente todos los días.',
     b3t: 'Comunicación directa', b3d: 'Sin intermediarios ni vueltas. Hablas con quien construye, y te respondo claro y rápido.',
     b4t: 'Soporte post-deploy', b4d: 'Tu sitio no se abandona al lanzar: backups, actualizaciones, monitoreo y nuevas funciones cuando las pidas.',
-    faqTitle: 'Preguntas frecuentes',
     q1: '¿Qué tipo de proyectos haces?', a1: 'Sitios corporativos, e-commerce, sistemas de reservas, gestión hotelera, apps móviles, paneles admin y automatizaciones. Todo con stack moderno y desplegado en producción.',
     q2: '¿Cuánto tarda un proyecto?', a2: 'Una landing page puede estar lista en 1-2 semanas; una plataforma completa (reservas, e-commerce, panel admin) suele tomar 3-8 semanas según el alcance.',
     q3: '¿Incluyes el hosting y el dominio?', a3: 'Sí. Configuro el servidor, dominio, SSL y CI/CD. Tu sitio queda en producción funcionando, no en una carpeta olvidada.',
     q4: '¿Das soporte después del lanzamiento?', a4: 'Sí, ofrezco soporte y mantenimiento continuo: actualizaciones, backups, monitoreo y nuevas funciones cuando las necesites.',
-    curveTitle: 'Tu proyecto, en producción',
-    giftText: 'Tu idea no se queda en un mockup: se convierte en un producto real, desplegado y en uso.',
-    giftCta: 'Hablemos por WhatsApp',
     contactTitle: '¿Tienes un proyecto en mente?', contactSub: 'Hablemos: te ayudo a llevarlo de la idea a producción, sin vueltas.', contactCta: 'Escríbeme'
   },
   en: {
     brand: 'Andrés Fabián Ruiz', navProjects: 'Projects', navStack: 'Stack', navFaq: 'FAQ',
-    heroTitle: 'I build digital platforms <em>end to end</em>',
+    heroTitle: 'I build digital platforms <em>tailored to you</em>',
     heroParagraph: 'Full Stack Software Developer. Web, mobile apps and custom systems — from idea to deploy, no fuss.',
     heroCta: 'View projects', heroHand: 'Available for projects',
     projectsTitle: 'Projects in production', projectsSub: 'Real platforms people use every day. Every project, from code to server.',
@@ -847,14 +748,10 @@ const i18n = {
     b2t: 'Real products in use', b2d: 'No toy demos: every project in this portfolio is live and used by people every day.',
     b3t: 'Direct communication', b3d: 'No middlemen, no runaround. You talk to the person building it, and I reply clearly and fast.',
     b4t: 'Post-deploy support', b4d: "Your site isn't abandoned at launch: backups, updates, monitoring and new features when you ask.",
-    faqTitle: 'Frequently asked questions',
     q1: 'What kind of projects do you build?', a1: 'Corporate sites, e-commerce, booking systems, hotel management, mobile apps, admin panels and automations. All with a modern stack, deployed to production.',
     q2: 'How long does a project take?', a2: 'A landing page can be ready in 1-2 weeks; a full platform (bookings, e-commerce, admin panel) usually takes 3-8 weeks depending on scope.',
     q3: 'Do you include hosting and domain?', a3: 'Yes. I set up the server, domain, SSL and CI/CD. Your site goes live and keeps running — not left in a forgotten folder.',
     q4: 'Do you provide support after launch?', a4: 'Yes, I offer ongoing support and maintenance: updates, backups, monitoring and new features when you need them.',
-    curveTitle: 'Your project, in production',
-    giftText: "Your idea doesn't stay as a mockup: it becomes a real product, deployed and in use.",
-    giftCta: "Let's talk on WhatsApp",
     contactTitle: 'Got a project in mind?', contactSub: "Let's talk: I'll help you take it from idea to production, no runaround.", contactCta: 'Message me'
   }
 };
@@ -906,6 +803,30 @@ window.addEventListener('scroll', () => {
   header.classList.toggle('is-scrolled', window.scrollY > 60);
 });
 
+// Efecto 3D del hero: los elementos flotantes se mueven con scroll a velocidades distintas
+// (uno por debajo del texto, otro por encima tocándolo — como los libros de aardvarkbookclub.com)
+(function initHeroParallax() {
+  const below = document.querySelector('[data-hero-float-b]');
+  const above = document.querySelector('[data-hero-float-a]');
+  if (!below || !above) return;
+
+  let ticking = false;
+  function update() {
+    const y = window.scrollY;
+    // El elemento inferior baja lento (pasa por debajo del texto)
+    below.style.transform = 'translateY(' + (y * 0.12) + 'px) rotate(-6deg)';
+    // El elemento superior sube más rápido y se corre lateralmente (toca el título y se aparta)
+    above.style.transform = 'translateY(' + (-y * 0.2) + 'px) translateX(' + (y * 0.06) + 'px) rotate(4deg)';
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  // Animación de entrada al cargar
+  below.style.transition = 'transform .1s linear';
+  above.style.transition = 'transform .1s linear';
+})();
+
 // Reveal
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -923,5 +844,8 @@ document.querySelectorAll('.books__header, .flow__header, .genre__header, .faq__
   io.observe(el);
 });
 </script>
+<a href="https://wa.me/573216092561" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2a9.9 9.9 0 0 0-8.4 15.2L2 22l4.9-1.6A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.24.68-1.4 1.3-1.94 1.35-.5.05-1.13.24-3.8-.8-3.22-1.26-5.26-4.5-5.42-4.71-.16-.21-1.29-1.72-1.29-3.28 0-1.56.82-2.33 1.11-2.65.29-.32.63-.4.84-.4h.6c.2 0 .46-.07.72.55.26.63.9 2.17.98 2.33.08.16.13.35.02.56-.1.21-.16.34-.32.53-.16.18-.34.41-.48.55-.16.16-.33.34-.14.66.19.32.84 1.39 1.81 2.25 1.24 1.1 2.29 1.44 2.61 1.6.32.16.51.13.7-.08.19-.21.8-.94 1.02-1.26.21-.32.42-.26.71-.16.29.11 1.86.88 2.18 1.04.32.16.53.24.61.37.08.13.08.77-.16 1.45Z"/></svg>
+</a>
 </body>
 </html>
