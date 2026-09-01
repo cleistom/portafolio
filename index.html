@@ -118,16 +118,6 @@ nav {
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(16,185,129,0.45); }
 .btn-ghost:hover { border-color: #34d399; color: #6ee7b7; transform: translateY(-2px); }
-.hero-stats {
-  display: flex; gap: 44px; margin-top: 60px; flex-wrap: wrap;
-  border-top: 1px solid rgba(42,49,66,0.8); padding-top: 32px;
-}
-.stat .num {
-  font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em;
-  font-family: 'IBM Plex Mono', monospace; color: #ffffff;
-}
-.stat .num .plus { color: #6ee7b7; }
-.stat .lbl { color: #9aa3b5; font-size: 0.82rem; margin-top: 4px; letter-spacing: 0.02em; }
 .scroll-hint {
   position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%);
   color: #9aa3b5; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
@@ -300,12 +290,6 @@ footer .mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; marg
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </a>
       <a href="#contacto" class="btn btn-ghost">Hablemos</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="num">30<span class="plus">+</span></div><div class="lbl">proyectos construidos</div></div>
-      <div class="stat"><div class="num">25<span class="plus">+</span></div><div class="lbl">sitios en producción</div></div>
-      <div class="stat"><div class="num">10<span class="plus">+</span></div><div class="lbl">tecnologías dominadas</div></div>
-      <div class="stat"><div class="num">3</div><div class="lbl">plataformas móviles</div></div>
     </div>
   </div>
   <div class="scroll-hint">Scroll<span class="line"></span></div>
@@ -580,31 +564,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
-
-// Contador animado de stats
-function animateCount(el, target, suffix) {
-  const dur = 1400; const start = performance.now();
-  function tick(now) {
-    const p = Math.min((now - start) / dur, 1);
-    const eased = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.round(eased * target) + suffix;
-    if (p < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-const statIO = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('.num').forEach(n => {
-        const txt = n.textContent;
-        const num = parseInt(txt);
-        if (!isNaN(num) && txt.length < 5) animateCount(n, num, txt.includes('+') ? '+' : '');
-      });
-      statIO.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelector('.hero-stats') && statIO.observe(document.querySelector('.hero-stats'));
 </script>
 </body>
 </html>
