@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Lumina Insurance Group — Protecting your future with clarity. Bilingual insurance services in Spartanburg, SC." />
+    <meta name="keywords" content="insurance, home insurance, life insurance, auto insurance, commercial insurance, Spartanburg SC" />
+    <meta property="og:title" content="Lumina Insurance Group" />
+    <meta property="og:description" content="Protecting your future with clarity." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cornflowerblue-ibex-588396.hostingersite.com/" />
+    <meta property="og:image" content="https://cornflowerblue-ibex-588396.hostingersite.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lumina Insurance Group" />
+    <meta name="twitter:description" content="Protecting your future with clarity." />
+    <meta name="twitter:image" content="https://cornflowerblue-ibex-588396.hostingersite.com/og-image.png" />
+    <title>Lumina Insurance Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/index-CYtJ7VMu.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B2_mBzyv.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
