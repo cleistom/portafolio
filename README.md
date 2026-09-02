@@ -18,7 +18,7 @@ Estilo inspirado en aardvarkbookclub.com: tipografías Champ + Degular + Hello O
 ## Contenido
 
 - Hero amarillo con terminal + elementos flotantes 3D
-- Slider de proyectos en producción (Keys Motors, Zamudio Hotel, HISESA, Buongiorno, Albalash, Lumina, Chorro, Miami Acura, Apartasuites)
+- Slider de proyectos en producción (Keys Motors, Zamudio Hotel con capturas de módulos, HISESA, Buongiorno, Albalash, Lumina, Chorro, Creative Network, TM Double Service, SG-SST con capturas, Bendito Trailer)
 - Cómo trabajo (4 pasos con tarjetas de color e ilustraciones SVG estilo caricatura: conversación, DB, código, cohete)
 - Stack con logos animados
 - Beneficios

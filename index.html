@@ -211,6 +211,12 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
 .books-slider__item-author { color:#555; font-size:1em; font-weight:500; }
 .books-slider__item-link { font-weight:700; font-size:1em; text-decoration:underline; text-underline-offset:4px; }
 
+/* ===== MINI-GALERÍA DE CAPTURAS EN TARJETAS ===== */
+.shots { display: grid; grid-template-columns: 1fr 1fr; gap: .5em; margin-top: .5em; }
+.shots img { width: 100%; border-radius: .6em; aspect-ratio: 16/10; object-fit: cover; border: 1px solid rgba(0,0,0,.08); transition: transform .25s ease, box-shadow .25s ease; }
+.shots img:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(0,0,0,.18); }
+.shots .more { grid-column: 1 / -1; text-align: center; font-size: .8em; font-weight: 700; color: #555; }
+
 /* ===== FLOW ===== */
 .flow { clip-path:inset(0% round 0 0 10em 10em); background-color:var(--soft-pink); position:relative; overflow:clip; margin-bottom:calc(var(--grid-margin)*-1); }
 .flow__container { max-width:1440px; margin:0 auto; padding:8em var(--grid-margin) 9em; }
@@ -450,6 +456,13 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
             <div class="books-slider__item-info">
               <h3 class="books-slider__item-title">Zamudio Hotel</h3>
               <p class="books-slider__item-author" data-i18n="p2a">Gestión hotelera · reservas, facturación, housekeeping</p>
+              <div class="shots">
+                <img src="shots/zamudio-mod-calendario.webp" alt="Calendario" loading="lazy">
+                <img src="shots/zamudio-mod-huespedes.webp" alt="Huéspedes" loading="lazy">
+                <img src="shots/zamudio-mod-housekeeping.webp" alt="Housekeeping" loading="lazy">
+                <img src="shots/zamudio-mod-facturacion.webp" alt="Facturación" loading="lazy">
+                <span class="more">+ módulos: grupos, mantenimiento, nómina</span>
+              </div>
               <a href="https://zamudiohotel.com" target="_blank" rel="noopener" class="books-slider__item-link" data-i18n="seeSite">Ver sitio</a>
             </div>
           </article></div>
@@ -494,19 +507,40 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
             </div>
           </article></div>
           <div class="books-slider__item"><article class="books-slider__item-inner">
-            <div class="books-slider__item-cover" style="background:#0013ab"><img src="logos/miami.svg" alt="Miami Acura" class="books-slider__item-img" loading="lazy"></div>
+            <div class="books-slider__item-cover" style="background:#fdf2e9"><img src="logos/creativenetwork.png" alt="Creative Network FL" class="books-slider__item-img" loading="lazy"></div>
             <div class="books-slider__item-info">
-              <h3 class="books-slider__item-title">Miami Acura</h3>
-              <p class="books-slider__item-author" data-i18n="p8a">Dealer Acura · inventario con filtros avanzados</p>
-              <a href="https://firebrick-herring-344039.hostingersite.com" target="_blank" rel="noopener" class="books-slider__item-link" data-i18n="seeSite">Ver sitio</a>
+              <h3 class="books-slider__item-title">Creative Network FL</h3>
+              <p class="books-slider__item-author">Agencia creativa · sitio corporativo Next.js</p>
+              <a href="https://creativenetworkfl.com" target="_blank" rel="noopener" class="books-slider__item-link" data-i18n="seeSite">Ver sitio</a>
             </div>
           </article></div>
           <div class="books-slider__item"><article class="books-slider__item-inner">
-            <div class="books-slider__item-cover" style="background:#1e293b"><img src="logos/apartasuites.svg" alt="Apartasuites" class="books-slider__item-img" loading="lazy"></div>
+            <div class="books-slider__item-cover" style="background:#eef2f7"><img src="logos/tm.png" alt="TM Double Service" class="books-slider__item-img" loading="lazy"></div>
             <div class="books-slider__item-info">
-              <h3 class="books-slider__item-title">Apartasuites</h3>
-              <p class="books-slider__item-author" data-i18n="p9a">Reservas · La Flora y Granada con panel admin</p>
-              <a href="https://apartasuitelaflora.com" target="_blank" rel="noopener" class="books-slider__item-link" data-i18n="seeSite">Ver sitio</a>
+              <h3 class="books-slider__item-title">TM Double Service</h3>
+              <p class="books-slider__item-author">Remodelación y limpieza · sitio corporativo</p>
+              <a href="https://tmdoubleservice.com" target="_blank" rel="noopener" class="books-slider__item-link" data-i18n="seeSite">Ver sitio</a>
+            </div>
+          </article></div>
+          <div class="books-slider__item"><article class="books-slider__item-inner">
+            <div class="books-slider__item-cover" style="background:#f0f4f8"><img src="logos/hisesasst.png" alt="HISESA SG-SST" class="books-slider__item-img" loading="lazy"></div>
+            <div class="books-slider__item-info">
+              <h3 class="books-slider__item-title">HISESA SG-SST</h3>
+              <p class="books-slider__item-author">Sistema de gestión · PHVA, capacitaciones, exámenes médicos</p>
+              <div class="shots">
+                <img src="shots/hisesasst-home.webp" alt="Inicio SG-SST" loading="lazy">
+                <img src="shots/hisesasst-login.webp" alt="Login SG-SST" loading="lazy">
+                <span class="more">Módulos: PHVA, capacitaciones, documentos, empresas</span>
+              </div>
+              <a href="https://hisesasst.com" target="_blank" rel="noopener" class="books-slider__item-link" data-i18n="seeSite">Ver sitio</a>
+            </div>
+          </article></div>
+          <div class="books-slider__item"><article class="books-slider__item-inner">
+            <div class="books-slider__item-cover" style="background:#fff7ed"><img src="logos/bendito.png" alt="Bendito Trailer" class="books-slider__item-img" loading="lazy"></div>
+            <div class="books-slider__item-info">
+              <h3 class="books-slider__item-title">Bendito Trailer</h3>
+              <p class="books-slider__item-author">Food truck · menú digital y pedidos</p>
+              <a href="https://benditotrailerdelsabor.com" target="_blank" rel="noopener" class="books-slider__item-link" data-i18n="seeSite">Ver sitio</a>
             </div>
           </article></div>
         </div>
@@ -729,8 +763,7 @@ const i18n = {
     p1a: 'Dealer de autos · 159+ vehículos sincronizados', p2a: 'Gestión hotelera · reservas, facturación, housekeeping',
     p3a: 'Seguridad industrial · web corporativa + SG-SST', p4a: 'Cafetería · menú QR, carrito e impresión térmica',
     p5a: 'Spa · reservas, academia digital y pagos Stripe', p6a: 'Seguros · sitio bilingüe EN/ES en Spartanburg SC',
-    p7a: 'Lotes campestres · galería, video drone y formulario', p8a: 'Dealer Acura · inventario con filtros avanzados',
-    p9a: 'Reservas · La Flora y Granada con panel admin',
+    p7a: 'Lotes campestres · galería, video drone y formulario',
     flowTitle: 'Cómo trabajo', flowHand: 'Tu proyecto en buenas manos', flowCta: 'Hablemos',
     flowStep1: 'Paso #1', flowCard1: 'Entiendo el negocio', flowCard1t: 'Escucho qué necesitas, analizo el problema y propongo la mejor solución técnica.',
     flowStep2: 'Paso #2', flowCard2: 'Arquitectura y diseño', flowCard2t: 'Defino la base de datos, la API y el frontend. Base sólida desde el día uno.',
@@ -758,8 +791,7 @@ const i18n = {
     p1a: 'Car dealer · 159+ synced vehicles', p2a: 'Hotel management · bookings, billing, housekeeping',
     p3a: 'Industrial safety · corporate site + SG-SST', p4a: 'Coffee shop · QR menu, cart & thermal printing',
     p5a: 'Spa · bookings, digital academy, Stripe payments', p6a: 'Insurance · bilingual EN/ES site in Spartanburg SC',
-    p7a: 'Country lots · gallery, drone video & contact form', p8a: 'Acura dealer · inventory with advanced filters',
-    p9a: 'Bookings · La Flora & Granada with admin panel',
+    p7a: 'Country lots · gallery, drone video & contact form',
     flowTitle: 'How I work', flowHand: 'Your project in good hands', flowCta: "Let's talk",
     flowStep1: 'Step #1', flowCard1: 'Understand the business', flowCard1t: 'I listen to what you need, analyze the problem and propose the best technical solution.',
     flowStep2: 'Step #2', flowCard2: 'Architecture & design', flowCard2t: 'I define the database, API and frontend. Solid foundation from day one.',
