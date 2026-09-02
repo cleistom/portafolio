@@ -115,6 +115,34 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
 .hero-code__cursor { display:inline-block; width:.6em; height:1.1em; background:var(--bright-pink); vertical-align:middle; animation:blink 1s steps(2) infinite; }
 @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
 
+/* ===== HERO ORBIT: pasa sobre la "o" de Construyo (3D) ===== */
+.hero__title-wrap { position: relative; display: inline-block; }
+.hero-orbit {
+  position: absolute; z-index: 20; top: 8%; left: 26%;
+  pointer-events: none;
+  animation: orbit-pass 7s cubic-bezier(.45,0,.25,1) infinite;
+}
+.hero-orbit__card {
+  background: var(--black); color: #fff; border-radius: 1em;
+  padding: .7em 1em; display: flex; align-items: center; gap: .6em;
+  box-shadow: 0 16px 40px rgba(0,0,0,.45);
+  font-family: 'Menlo', monospace; font-size: .8em; white-space: nowrap;
+}
+.hero-orbit__card img { width: 1.6em; height: 1.6em; object-fit: contain; }
+.hero-orbit__card span { color: var(--bright-pink); }
+@keyframes orbit-pass {
+  0%   { transform: translateX(-140%) translateY(0) rotate(-8deg) scale(1); }
+  18%  { transform: translateX(-40%) translateY(-14%) rotate(-3deg) scale(1.06); }
+  28%  { transform: translateX(0) translateY(-22%) rotate(0deg) scale(1.1); }  /* tapa la o */
+  42%  { transform: translateX(60%) translateY(-18%) rotate(4deg) scale(1.05); }
+  55%  { transform: translateX(150%) translateY(0) rotate(10deg) scale(1); }
+  100% { transform: translateX(150%) translateY(0) rotate(10deg) scale(1); }
+}
+@media (max-width:900px) {
+  .hero-orbit { top: 2%; left: 12%; }
+  .hero-orbit__card { font-size: .7em; }
+}
+
 /* ===== HERO FLOATS (efecto 3D) ===== */
 .hero__visual { perspective: 800px; }
 .hero-float { position: absolute; z-index: 5; pointer-events: none; }
@@ -211,7 +239,11 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
 .flow__card-step { font-family:'Champ',Arial,sans-serif; font-size:1.4em; letter-spacing:.02em; }
 .flow__card-title { font-family:'Champ',Arial,sans-serif; font-size:3em; line-height:.9; margin-top:.6em; letter-spacing:-.01em; }
 .flow__card-text { font-size:1.3em; margin-top:1.2em; line-height:1.25; font-weight:500; }
-.flow__card-illustration { margin-top:auto; width:100%; height:14em; object-fit:contain; }
+.flow__card-illustration {
+  margin-top:auto; width:100%; height:14em; object-fit:contain;
+  background: rgba(255,255,255,.45); border-radius: 1.2em; padding: .8em;
+}
+.flow__card.is--violet .flow__card-illustration { background: rgba(255,255,255,.14); }
 
 /* ===== STACK con logos ===== */
 .genre { clip-path:inset(0% round 0 0 10em 10em); background-color:var(--bright-pink); position:relative; overflow:clip; margin-bottom:calc(var(--grid-margin)*-1); }
@@ -231,7 +263,6 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
 .genre__item-logo { width:3.8em; height:3.8em; object-fit:contain; transition:transform .4s cubic-bezier(.2,.8,.2,1); }
 .genre__item:hover .genre__item-logo { transform:scale(1.15) rotate(-6deg); }
 .genre__item-name { font-family:'Champ',Arial,sans-serif; font-size:1.1em; line-height:1; text-align:center; }
-.genre__item-level { font-size:.8em; color:#777; font-weight:600; }
 .genre__item:nth-child(odd):hover { background:var(--pale-yellow); }
 .genre__item:nth-child(even):hover { background:var(--pale-blue); }
 .genre__item:nth-child(3n):hover { background:var(--pale-pink); }
@@ -328,7 +359,16 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
   <section data-intro-home class="hero">
     <div class="hero__inner u-container">
       <div class="hero__content">
-        <h1 class="hero__title" data-i18n="heroTitle">Construyo plataformas digitales <em>a la medida</em></h1>
+        <div class="hero__title-wrap">
+          <h1 class="hero__title" data-i18n="heroTitle">Construyo plataformas digitales <em>a la medida</em></h1>
+          <!-- Elemento flotante que pasa por encima de la letra "o" de Construyo (efecto 3D) -->
+          <div class="hero-orbit" data-hero-orbit aria-hidden="true">
+            <div class="hero-orbit__card">
+              <img src="logos/tech/nextjs.svg" alt="">
+              <span>&lt;dev /&gt;</span>
+            </div>
+          </div>
+        </div>
         <p class="hero__paragraph" data-i18n="heroParagraph">Desarrollador de Software Full Stack. Web, apps móviles y sistemas a medida — de la idea al deploy, sin rodeos.</p>
         <div class="hero__cta-wrap">
           <a data-button-alt href="#proyectos" class="button-alt">
@@ -520,7 +560,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
               <span class="flow__card-step" data-i18n="flowStep1">Paso #1</span>
               <h3 class="flow__card-title" data-i18n="flowCard1">Entiendo el negocio</h3>
               <p class="flow__card-text" data-i18n="flowCard1t">Escucho qué necesitas, analizo el problema y propongo la mejor solución técnica.</p>
-              <img src="step1.webp" loading="lazy" alt="Paso 1" class="flow__card-illustration">
+              <img src="step1.svg" loading="lazy" alt="Paso 1" class="flow__card-illustration">
             </div>
           </div>
           <div class="flow__list-item">
@@ -528,7 +568,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
               <span class="flow__card-step" style="color:rgba(255,255,255,.7)" data-i18n="flowStep2">Paso #2</span>
               <h3 class="flow__card-title" data-i18n="flowCard2">Arquitectura y diseño</h3>
               <p class="flow__card-text" data-i18n="flowCard2t">Defino la base de datos, la API y el frontend. Base sólida desde el día uno.</p>
-              <img src="step2.webp" loading="lazy" alt="Paso 2" class="flow__card-illustration">
+              <img src="step2.svg" loading="lazy" alt="Paso 2" class="flow__card-illustration">
             </div>
           </div>
           <div class="flow__list-item">
@@ -536,7 +576,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
               <span class="flow__card-step" data-i18n="flowStep3">Paso #3</span>
               <h3 class="flow__card-title" data-i18n="flowCard3">Desarrollo e iteración</h3>
               <p class="flow__card-text" data-i18n="flowCard3t">Construyo con entregas constantes. Te mantengo al tanto de cada avance.</p>
-              <img src="step3.webp" loading="lazy" alt="Paso 3" class="flow__card-illustration">
+              <img src="step3.svg" loading="lazy" alt="Paso 3" class="flow__card-illustration">
             </div>
           </div>
           <div class="flow__list-item">
@@ -544,7 +584,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
               <span class="flow__card-step" data-i18n="flowStep4">Paso #4</span>
               <h3 class="flow__card-title" data-i18n="flowCard4">Deploy y soporte</h3>
               <p class="flow__card-text" data-i18n="flowCard4t">Despliego en producción, configuro dominio y SSL, y me aseguro de que siga funcionando.</p>
-              <img src="step4.webp" loading="lazy" alt="Paso 4" class="flow__card-illustration">
+              <img src="step4.svg" loading="lazy" alt="Paso 4" class="flow__card-illustration">
             </div>
           </div>
         </div>
@@ -562,30 +602,30 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
         </div>
       </header>
       <div class="genre__grid">
-        <div class="genre__item"><img src="logos/tech/react.svg" alt="React" class="genre__item-logo" loading="lazy"><span class="genre__item-name">React</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/nextjs.svg" alt="Next.js" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Next.js</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/typescript.svg" alt="TypeScript" class="genre__item-logo" loading="lazy"><span class="genre__item-name">TypeScript</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/nodejs.svg" alt="Node.js" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Node.js</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/postgresql.svg" alt="PostgreSQL" class="genre__item-logo" loading="lazy"><span class="genre__item-name">PostgreSQL</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/php.svg" alt="PHP" class="genre__item-logo" loading="lazy"><span class="genre__item-name">PHP</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/docker.svg" alt="Docker" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Docker</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/tailwindcss.svg" alt="Tailwind" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Tailwind</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/mysql.svg" alt="MySQL" class="genre__item-logo" loading="lazy"><span class="genre__item-name">MySQL</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/redis.svg" alt="Redis" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Redis</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
-        <div class="genre__item"><img src="logos/tech/prisma.svg" alt="Prisma" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Prisma</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/swift.svg" alt="SwiftUI" class="genre__item-logo" loading="lazy"><span class="genre__item-name">SwiftUI</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
-        <div class="genre__item"><img src="logos/tech/kotlin.svg" alt="Kotlin" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Kotlin</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
-        <div class="genre__item"><img src="logos/tech/vite.svg" alt="Vite" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Vite</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/git.svg" alt="Git" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Git</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/linux.svg" alt="Linux" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Linux</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/nginx.svg" alt="Nginx" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Nginx</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/github.svg" alt="GitHub" class="genre__item-logo" loading="lazy"><span class="genre__item-name">GitHub</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/azure.svg" alt="Azure" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Azure</span><span class="genre__item-level" data-i18n="lvlAdv">Avanzado</span></div>
-        <div class="genre__item"><img src="logos/tech/python.svg" alt="Python" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Python</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
-        <div class="genre__item"><img src="logos/tech/aws.svg" alt="AWS" class="genre__item-logo" loading="lazy"><span class="genre__item-name">AWS</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
-        <div class="genre__item"><img src="logos/tech/oracle.svg" alt="Oracle" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Oracle</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
-        <div class="genre__item"><img src="logos/tech/mongodb.svg" alt="MongoDB" class="genre__item-logo" loading="lazy"><span class="genre__item-name">MongoDB</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
-        <div class="genre__item"><img src="logos/tech/kubernetes.svg" alt="Kubernetes" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Kubernetes</span><span class="genre__item-level" data-i18n="lvlInt">Intermedio</span></div>
+        <div class="genre__item"><img src="logos/tech/react.svg" alt="React" class="genre__item-logo" loading="lazy"><span class="genre__item-name">React</span></div>
+        <div class="genre__item"><img src="logos/tech/nextjs.svg" alt="Next.js" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Next.js</span></div>
+        <div class="genre__item"><img src="logos/tech/typescript.svg" alt="TypeScript" class="genre__item-logo" loading="lazy"><span class="genre__item-name">TypeScript</span></div>
+        <div class="genre__item"><img src="logos/tech/nodejs.svg" alt="Node.js" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Node.js</span></div>
+        <div class="genre__item"><img src="logos/tech/postgresql.svg" alt="PostgreSQL" class="genre__item-logo" loading="lazy"><span class="genre__item-name">PostgreSQL</span></div>
+        <div class="genre__item"><img src="logos/tech/php.svg" alt="PHP" class="genre__item-logo" loading="lazy"><span class="genre__item-name">PHP</span></div>
+        <div class="genre__item"><img src="logos/tech/docker.svg" alt="Docker" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Docker</span></div>
+        <div class="genre__item"><img src="logos/tech/tailwindcss.svg" alt="Tailwind" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Tailwind</span></div>
+        <div class="genre__item"><img src="logos/tech/mysql.svg" alt="MySQL" class="genre__item-logo" loading="lazy"><span class="genre__item-name">MySQL</span></div>
+        <div class="genre__item"><img src="logos/tech/redis.svg" alt="Redis" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Redis</span></div>
+        <div class="genre__item"><img src="logos/tech/prisma.svg" alt="Prisma" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Prisma</span></div>
+        <div class="genre__item"><img src="logos/tech/swift.svg" alt="SwiftUI" class="genre__item-logo" loading="lazy"><span class="genre__item-name">SwiftUI</span></div>
+        <div class="genre__item"><img src="logos/tech/kotlin.svg" alt="Kotlin" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Kotlin</span></div>
+        <div class="genre__item"><img src="logos/tech/vite.svg" alt="Vite" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Vite</span></div>
+        <div class="genre__item"><img src="logos/tech/git.svg" alt="Git" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Git</span></div>
+        <div class="genre__item"><img src="logos/tech/linux.svg" alt="Linux" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Linux</span></div>
+        <div class="genre__item"><img src="logos/tech/nginx.svg" alt="Nginx" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Nginx</span></div>
+        <div class="genre__item"><img src="logos/tech/github.svg" alt="GitHub" class="genre__item-logo" loading="lazy"><span class="genre__item-name">GitHub</span></div>
+        <div class="genre__item"><img src="logos/tech/azure.svg" alt="Azure" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Azure</span></div>
+        <div class="genre__item"><img src="logos/tech/python.svg" alt="Python" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Python</span></div>
+        <div class="genre__item"><img src="logos/tech/aws.svg" alt="AWS" class="genre__item-logo" loading="lazy"><span class="genre__item-name">AWS</span></div>
+        <div class="genre__item"><img src="logos/tech/oracle.svg" alt="Oracle" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Oracle</span></div>
+        <div class="genre__item"><img src="logos/tech/mongodb.svg" alt="MongoDB" class="genre__item-logo" loading="lazy"><span class="genre__item-name">MongoDB</span></div>
+        <div class="genre__item"><img src="logos/tech/kubernetes.svg" alt="Kubernetes" class="genre__item-logo" loading="lazy"><span class="genre__item-name">Kubernetes</span></div>
       </div>
     </div>
   </section>
@@ -712,7 +752,6 @@ const i18n = {
     flowStep3: 'Paso #3', flowCard3: 'Desarrollo e iteración', flowCard3t: 'Construyo con entregas constantes. Te mantengo al tanto de cada avance.',
     flowStep4: 'Paso #4', flowCard4: 'Deploy y soporte', flowCard4t: 'Despliego en producción, configuro dominio y SSL, y me aseguro de que siga funcionando.',
     stackTitle: 'Tecnologías que domino', stackHand: 'Una herramienta para cada necesidad',
-    lvlAdv: 'Avanzado', lvlInt: 'Intermedio',
     benefitsTitle: '¿Por qué trabajar conmigo?',
     b1t: 'Diseño, código y deploy', b1d: 'Me encargo de todo el ciclo: arquitectura, base de datos, API, frontend y servidor. Tú solo ves el resultado.',
     b2t: 'Productos reales en uso', b2d: 'No hago demos de juguete: cada proyecto en este portafolio está en producción y lo usa gente todos los días.',
@@ -742,7 +781,6 @@ const i18n = {
     flowStep3: 'Step #3', flowCard3: 'Build & iterate', flowCard3t: "I build with constant deliveries. You're always up to date on progress.",
     flowStep4: 'Step #4', flowCard4: 'Deploy & support', flowCard4t: 'I deploy to production, set up domain and SSL, and make sure it keeps working.',
     stackTitle: 'Technologies I master', stackHand: 'A tool for every need',
-    lvlAdv: 'Advanced', lvlInt: 'Intermediate',
     benefitsTitle: 'Why work with me?',
     b1t: 'Design, code & deploy', b1d: 'I handle the whole cycle: architecture, database, API, frontend and server. You just see the result.',
     b2t: 'Real products in use', b2d: 'No toy demos: every project in this portfolio is live and used by people every day.',

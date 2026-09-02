@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240">
+  <!-- Paso 1: Entiendo el negocio — dos personajes conversando -->
+  <circle cx="110" cy="110" r="26" fill="#3b308f"/>
+  <path d="M70 195c0-30 18-50 40-50s40 20 40 50" fill="#3b308f"/>
+  <circle cx="210" cy="120" r="24" fill="#f9a220"/>
+  <path d="M174 195c0-28 16-46 36-46s36 18 36 46" fill="#f9a220"/>
+  <path d="M140 60c6-12 12-20 20-20s14 8 20 20" stroke="#3b308f" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- burbuja de diálogo -->
+  <rect x="180" y="52" width="70" height="34" rx="10" fill="#fff"/>
+  <path d="M205 86l-8 12 16-6z" fill="#fff"/>
+  <circle cx="205" cy="69" r="4" fill="#3b308f"/>
+  <circle cx="220" cy="69" r="4" fill="#3b308f"/>
+  <circle cx="235" cy="69" r="4" fill="#3b308f"/>
+</svg>

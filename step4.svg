@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240">
+  <!-- Paso 4: Deploy — cohete despegando -->
+  <path d="M160 30c-20 34-26 62-26 90 0 18 8 30 26 40 18-10 26-22 26-40 0-28-6-56-26-90z" fill="#fd48f2"/>
+  <circle cx="160" cy="95" r="10" fill="#fff"/>
+  <path d="M134 160l-16 30 18-8 10-22z" fill="#f9a220"/>
+  <path d="M186 160l16 30-18-8-10-22z" fill="#f9a220"/>
+  <path d="M160 170v-40" stroke="#fff" stroke-width="4"/>
+  <!-- fuego -->
+  <path d="M145 172c5 12 25 12 30 0 3 14-6 26-15 26s-18-12-15-26z" fill="#f9a220"/>
+  <path d="M150 174c3 8 17 8 20 0" fill="#ffd24a"/>
+  <!-- nube -->
+  <ellipse cx="160" cy="205" rx="60" ry="12" fill="#ddfcfc"/>
+  <ellipse cx="130" cy="200" rx="24" ry="9" fill="#fff"/>
+  <ellipse cx="190" cy="200" rx="24" ry="9" fill="#fff"/>
+  <!-- estrellas -->
+  <circle cx="80" cy="50" r="4" fill="#ffd24a"/>
+  <circle cx="250" cy="40" r="4" fill="#ffd24a"/>
+  <circle cx="270" cy="90" r="3" fill="#ffd24a"/>
+  <circle cx="50" cy="90" r="3" fill="#ffd24a"/>
+</svg>

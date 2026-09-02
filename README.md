@@ -10,8 +10,8 @@ Estilo inspirado en aardvarkbookclub.com: tipografías Champ + Degular + Hello O
 
 - **Idiomas:** ES por defecto + botón para traducir a EN (todo el contenido bilingüe)
 - **Logo:** favicon del sitio usado en header, "Cómo trabajo" y footer
-- **Hero:** editor de código + elementos flotantes 3D con parallax (tarjeta de stack por debajo del texto, chip de deploy por encima tocando el título)
-- **Stack:** 24 logos oficiales de tecnologías (devicon) con hover animado — incluye Azure, AWS, Python, Oracle, MongoDB, Kubernetes
+- **Hero:** editor de código + elemento flotante 3D que orbita y tapa/destapa la letra "o" de "Construyo"
+- **Stack:** 24 logos oficiales de tecnologías (devicon) con hover animado — incluye Azure, AWS, Python, Oracle, MongoDB, Kubernetes. Sin niveles de dominio
 - **WhatsApp flotante** con animación de pulso
 - **Sin CV** en la página
 
@@ -19,7 +19,7 @@ Estilo inspirado en aardvarkbookclub.com: tipografías Champ + Degular + Hello O
 
 - Hero amarillo con terminal + elementos flotantes 3D
 - Slider de proyectos en producción (Keys Motors, Zamudio Hotel, HISESA, Buongiorno, Albalash, Lumina, Chorro, Miami Acura, Apartasuites)
-- Cómo trabajo (4 pasos con tarjetas de color e ilustraciones)
+- Cómo trabajo (4 pasos con tarjetas de color e ilustraciones SVG estilo caricatura: conversación, DB, código, cohete)
 - Stack con logos animados
 - Beneficios
 - Marquee de tecnologías

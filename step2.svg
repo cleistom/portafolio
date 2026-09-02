@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240">
+  <!-- Paso 2: Arquitectura y diseño — diagrama de base de datos -->
+  <rect x="30" y="40" width="90" height="60" rx="10" fill="#1ce8ed"/>
+  <rect x="34" y="46" width="82" height="10" rx="4" fill="#fff" opacity=".5"/>
+  <rect x="44" y="64" width="22" height="8" rx="3" fill="#fff"/>
+  <rect x="74" y="64" width="32" height="8" rx="3" fill="#fff"/>
+  <rect x="44" y="80" width="22" height="8" rx="3" fill="#fff"/>
+  <rect x="74" y="80" width="32" height="8" rx="3" fill="#fff"/>
+  <rect x="200" y="40" width="90" height="60" rx="10" fill="#9982de"/>
+  <rect x="204" y="46" width="82" height="10" rx="4" fill="#fff" opacity=".5"/>
+  <rect x="214" y="64" width="26" height="8" rx="3" fill="#fff"/>
+  <rect x="248" y="64" width="28" height="8" rx="3" fill="#fff"/>
+  <!-- cilindro de DB -->
+  <ellipse cx="110" cy="170" rx="36" ry="12" fill="#2de124"/>
+  <path d="M74 170v50a36 12 0 0 0 72 0v-50" fill="#2de124"/>
+  <ellipse cx="110" cy="170" rx="36" ry="12" fill="#fff" opacity=".35"/>
+  <!-- conexiones -->
+  <path d="M120 70h80M120 100l-10 60M200 100l10 60" stroke="#3b308f" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>
