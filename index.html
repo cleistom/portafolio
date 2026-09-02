@@ -166,6 +166,33 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
   .float-card { width: 12em; }
 }
 
+/* ===== MODAL DE CAPTURAS ===== */
+.shot-modal {
+  position: fixed; inset: 0; z-index: 3000;
+  background: rgba(0,0,0,.85); backdrop-filter: blur(6px);
+  display: none; align-items: center; justify-content: center;
+  padding: 2em; cursor: zoom-out;
+}
+.shot-modal.open { display: flex; }
+.shot-modal__img {
+  max-width: min(1100px, 92vw); max-height: 88vh;
+  border-radius: 1em; box-shadow: 0 30px 90px rgba(0,0,0,.6);
+  cursor: default;
+}
+.shot-modal__close {
+  position: absolute; top: 1.2em; right: 1.4em;
+  width: 3em; height: 3em; border-radius: 50%;
+  background: rgba(255,255,255,.15); color: #fff;
+  display: grid; place-items: center; font-size: 1.2em;
+  transition: background .2s ease, transform .2s ease;
+}
+.shot-modal__close:hover { background: rgba(255,255,255,.3); transform: scale(1.1); }
+.shot-modal__caption {
+  position: absolute; bottom: 1.4em; left: 50%; transform: translateX(-50%);
+  color: #fff; font-size: .95em; background: rgba(0,0,0,.6);
+  padding: .5em 1.2em; border-radius: 999px;
+}
+
 /* ===== WHATSAPP FLOTANTE ===== */
 .wa-float {
   position: fixed; bottom: 1.6em; right: 1.6em; z-index: 2000;
@@ -467,7 +494,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
             </div>
           </article></div>
           <div class="books-slider__item"><article class="books-slider__item-inner">
-            <div class="books-slider__item-cover" style="background:#ddfcfc"><img src="logos/hisesa.png" alt="HISESA" class="books-slider__item-img" loading="lazy"></div>
+            <div class="books-slider__item-cover" style="background:#ddfcfc"><img src="logos/hisesasst.png" alt="HISESA" class="books-slider__item-img" loading="lazy"></div>
             <div class="books-slider__item-info">
               <h3 class="books-slider__item-title">HISESA</h3>
               <p class="books-slider__item-author" data-i18n="p3a">Seguridad industrial · web corporativa + SG-SST</p>
@@ -507,7 +534,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
             </div>
           </article></div>
           <div class="books-slider__item"><article class="books-slider__item-inner">
-            <div class="books-slider__item-cover" style="background:#fdf2e9"><img src="logos/creativenetwork.png" alt="Creative Network FL" class="books-slider__item-img" loading="lazy"></div>
+            <div class="books-slider__item-cover" style="background:#fdf2e9"><img src="logos/creativenetwork.svg" alt="Creative Network FL" class="books-slider__item-img" loading="lazy"></div>
             <div class="books-slider__item-info">
               <h3 class="books-slider__item-title">Creative Network FL</h3>
               <p class="books-slider__item-author">Agencia creativa · sitio corporativo Next.js</p>
@@ -877,6 +904,33 @@ window.addEventListener('scroll', () => {
   }, { passive: true });
 })();
 
+// Modal de capturas: clic en cualquier .shots img abre la imagen en grande
+(function initShotModal() {
+  const modal = document.getElementById('shotModal');
+  const img = document.getElementById('shotModalImg');
+  const cap = document.getElementById('shotModalCaption');
+  const close = document.getElementById('shotModalClose');
+  if (!modal || !img || !cap || !close) return;
+
+  document.querySelectorAll('.shots img').forEach(shot => {
+    shot.style.cursor = 'zoom-in';
+    shot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      img.src = shot.src;
+      cap.textContent = shot.alt || '';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  close.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+})();
+
 // Reveal
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -897,5 +951,11 @@ document.querySelectorAll('.books__header, .flow__header, .genre__header, .faq__
 <a href="https://wa.me/573216092561" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M12.04 2a9.9 9.9 0 0 0-8.4 15.2L2 22l4.9-1.6A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.24.68-1.4 1.3-1.94 1.35-.5.05-1.13.24-3.8-.8-3.22-1.26-5.26-4.5-5.42-4.71-.16-.21-1.29-1.72-1.29-3.28 0-1.56.82-2.33 1.11-2.65.29-.32.63-.4.84-.4h.6c.2 0 .46-.07.72.55.26.63.9 2.17.98 2.33.08.16.13.35.02.56-.1.21-.16.34-.32.53-.16.18-.34.41-.48.55-.16.16-.33.34-.14.66.19.32.84 1.39 1.81 2.25 1.24 1.1 2.29 1.44 2.61 1.6.32.16.51.13.7-.08.19-.21.8-.94 1.02-1.26.21-.32.42-.26.71-.16.29.11 1.86.88 2.18 1.04.32.16.53.24.61.37.08.13.08.77-.16 1.45Z"/></svg>
 </a>
+<!-- Modal de capturas -->
+<div class="shot-modal" id="shotModal" role="dialog" aria-modal="true">
+  <button class="shot-modal__close" id="shotModalClose" aria-label="Cerrar">✕</button>
+  <img class="shot-modal__img" id="shotModalImg" src="" alt="Captura ampliada">
+  <div class="shot-modal__caption" id="shotModalCaption"></div>
+</div>
 </body>
 </html>
