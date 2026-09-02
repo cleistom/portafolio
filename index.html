@@ -161,9 +161,20 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
   50%      { transform: translateY(-1em) rotate(-2deg); }
 }
 @media (max-width:900px) {
-  .hero-float.is--below { left: 34%; top: calc(-1.4em - 70px); }
+  .hero-float.is--below { left: 30%; top: calc(-1.2em - 80px); animation: float-touch-m 4.5s ease-in-out infinite; }
   .hero-float.is--above { right: 0; top: -1.5em; }
-  .float-card { width: 12em; }
+  @keyframes float-touch-m {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    45%      { transform: translateY(.9em) rotate(1deg); }
+    55%      { transform: translateY(.9em) rotate(1deg); }
+  }
+  .float-card { width: 8.5em; padding: .7em .8em; border-radius: 1em; }
+  .float-card__head { gap: .3em; margin-bottom: .6em; }
+  .float-card__head span { width: .55em; height: .55em; }
+  .float-card__row { gap: .5em; padding: .3em 0; }
+  .float-card__row img { width: 1em; height: 1em; }
+  .float-card__row span { font-size: .72em; }
+  .float-card__row b { font-size: .62em; }
 }
 
 /* ===== MODAL DE CAPTURAS ===== */
