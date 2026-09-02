@@ -121,7 +121,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
 .hero-float { position: absolute; z-index: 5; pointer-events: none; }
 /* Tarjeta blanca: flota justo arriba de la "o" de Construyo y baja a tocarla */
 .hero-float.is--below {
-  bottom: auto; left: 30%; top: -2.2em; z-index: 20;
+  bottom: auto; left: 30%; top: calc(-2.2em - 113px); z-index: 20;
   animation: float-touch 4.5s ease-in-out infinite;
 }
 /* Chip negro docker: flota suavemente */
@@ -161,7 +161,7 @@ button { background:none; border:none; cursor:pointer; font-family:inherit; }
   50%      { transform: translateY(-1em) rotate(-2deg); }
 }
 @media (max-width:900px) {
-  .hero-float.is--below { left: 34%; top: -1.4em; }
+  .hero-float.is--below { left: 34%; top: calc(-1.4em - 70px); }
   .hero-float.is--above { right: 0; top: -1.5em; }
   .float-card { width: 12em; }
 }
